@@ -1,0 +1,106 @@
+<div class="productos">
+
+    <div class="titulo">
+        <h1>Caja</h1>
+    </div>
+
+    <!-- SIN TURNO ABIERTO -->
+    <div id="bloqueAbrirTurno" style="display:none;">
+
+        <h2>Abrir turno de caja</h2>
+
+        <form id="formAbrirTurno">
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Caja</td>
+                        <td>
+                            <select id="selCaja" required></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Monto inicial (base)</td>
+                        <td><input type="number" min="0" step="0.01" id="montoInicial" value="0" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit">Abrir caja</button>
+
+        </form>
+
+    </div>
+
+    <!-- TURNO ABIERTO -->
+    <div id="bloqueTurnoAbierto" style="display:none;">
+
+        <h2>Turno abierto</h2>
+
+        <table>
+            <tbody>
+                <tr><td>Caja</td><td id="infoCaja"></td></tr>
+                <tr><td>Abierta por</td><td id="infoUsuario"></td></tr>
+                <tr><td>Desde</td><td id="infoFecha"></td></tr>
+                <tr><td>Monto inicial</td><td id="infoMontoInicial"></td></tr>
+            </tbody>
+        </table>
+
+        <h2>Registrar movimiento de caja</h2>
+
+        <form id="formMovimiento">
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Tipo</td>
+                        <td>
+                            <select id="movTipo" required>
+                                <option value="INGRESO">Ingreso</option>
+                                <option value="EGRESO">Egreso</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Concepto</td>
+                        <td><input type="text" id="movConcepto" placeholder="Ej: pago de domicilio"></td>
+                    </tr>
+                    <tr>
+                        <td>Valor</td>
+                        <td><input type="number" min="0" step="0.01" id="movValor" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit">Registrar movimiento</button>
+
+        </form>
+
+        <h2>Resumen del turno</h2>
+
+        <div id="resumenTurno">Cargando...</div>
+
+        <h2>Cerrar turno</h2>
+
+        <form id="formCerrarTurno">
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Dinero contado en caja</td>
+                        <td><input type="number" min="0" step="0.01" id="montoFinalReal" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit">Cerrar caja</button>
+
+        </form>
+
+    </div>
+
+    <p id="mensajeCaja"></p>
+
+</div>
+
+

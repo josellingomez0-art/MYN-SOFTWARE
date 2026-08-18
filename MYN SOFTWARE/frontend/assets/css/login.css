@@ -1,0 +1,203 @@
+/* ==========================================
+   MYN SOFTWARE
+   Login
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f3f3f3;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:100vh;
+
+}
+
+.login-container{
+
+    width:420px;
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    padding:35px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.logo-container{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.logo{
+
+    width:150px;
+
+    margin-bottom:15px;
+
+}
+
+.logo-container h1{
+
+    color:#14833b;
+
+    font-size:30px;
+
+    margin-bottom:5px;
+
+}
+
+.logo-container p{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    font-weight:bold;
+
+}
+
+.form-group input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #cccccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+.form-group input:focus{
+
+    outline:none;
+
+    border-color:#14833b;
+
+}
+
+.password-box{
+
+    display:flex;
+
+}
+
+.password-box input{
+
+    border-radius:8px 0 0 8px;
+
+}
+
+.password-box button{
+
+    width:50px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:#14833b;
+
+    color:white;
+
+    border-radius:0 8px 8px 0;
+
+}
+
+.recordar{
+
+    margin-bottom:20px;
+
+    font-size:14px;
+
+}
+
+#btnLogin{
+
+    width:100%;
+
+    background:#14833b;
+
+    color:white;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+#btnLogin:hover{
+
+    background:#0f6d2f;
+
+}
+
+.error{
+
+    color:#d50000;
+
+    text-align:center;
+
+    margin-top:18px;
+
+    min-height:20px;
+
+    font-size:14px;
+
+}
+
+.version{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:13px;
+
+}

@@ -1,0 +1,365 @@
+<section
+    class="reportes"
+    aria-labelledby="tituloReportes"
+>
+    <div class="reportes-cabecera">
+        <div>
+            <h1 id="tituloReportes">
+                Reportes
+            </h1>
+
+            <p>
+                Analiza ventas, compras,
+                utilidad e inventario.
+            </p>
+        </div>
+
+        <div class="acciones-reportes">
+            <button
+                id="btnExportarReporte"
+                type="button"
+                class="btn-secundario"
+            >
+                Exportar CSV
+            </button>
+
+            <button
+                id="btnImprimirReporte"
+                type="button"
+                class="btn-principal"
+            >
+                Imprimir
+            </button>
+        </div>
+    </div>
+
+    <div
+        id="mensajeReportes"
+        class="mensaje-reportes"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="filtros-reportes">
+        <div class="campo-reporte">
+            <label for="periodoReporte">
+                Periodo rápido
+            </label>
+
+            <select id="periodoReporte">
+                <option value="hoy">
+                    Hoy
+                </option>
+
+                <option value="semana">
+                    Esta semana
+                </option>
+
+                <option
+                    value="mes"
+                    selected
+                >
+                    Este mes
+                </option>
+
+                <option value="anio">
+                    Este año
+                </option>
+
+                <option value="personalizado">
+                    Personalizado
+                </option>
+            </select>
+        </div>
+
+        <div class="campo-reporte">
+            <label for="fechaDesdeReporte">
+                Desde
+            </label>
+
+            <input
+                id="fechaDesdeReporte"
+                type="date"
+            >
+        </div>
+
+        <div class="campo-reporte">
+            <label for="fechaHastaReporte">
+                Hasta
+            </label>
+
+            <input
+                id="fechaHastaReporte"
+                type="date"
+            >
+        </div>
+
+        <button
+            id="btnGenerarReporte"
+            type="button"
+            class="btn-principal"
+        >
+            Generar reporte
+        </button>
+    </div>
+
+    <div class="resumen-reportes">
+        <article>
+            <span>Ventas netas</span>
+
+            <strong id="reporteTotalVentas">
+                $0
+            </strong>
+
+            <small id="reporteCantidadVentas">
+                0 ventas
+            </small>
+        </article>
+
+        <article>
+            <span>Compras</span>
+
+            <strong id="reporteTotalCompras">
+                $0
+            </strong>
+
+            <small id="reporteCantidadCompras">
+                0 compras
+            </small>
+        </article>
+
+        <article>
+            <span>Utilidad bruta estimada</span>
+
+            <strong id="reporteUtilidad">
+                $0
+            </strong>
+
+            <small id="reporteMargen">
+                Margen 0%
+            </small>
+        </article>
+
+        <article>
+            <span>Valor inventario</span>
+
+            <strong id="reporteValorInventario">
+                $0
+            </strong>
+
+            <small id="reporteStockBajo">
+                0 productos con stock bajo
+            </small>
+        </article>
+    </div>
+
+    <div class="graficos-reportes">
+        <article class="panel-reporte">
+            <div class="panel-reporte-titulo">
+                <h2>Ventas y compras por día</h2>
+            </div>
+
+            <div class="grafico-contenedor">
+                <canvas
+                    id="graficoVentasCompras"
+                    height="320"
+                ></canvas>
+            </div>
+        </article>
+
+        <article class="panel-reporte">
+            <div class="panel-reporte-titulo">
+                <h2>Ventas por método de pago</h2>
+            </div>
+
+            <div
+                id="graficoMetodosPago"
+                class="barras-reportes"
+            ></div>
+        </article>
+    </div>
+
+    <div class="tabs-reportes">
+        <button
+            type="button"
+            class="activo"
+            data-reporte="productos"
+        >
+            Productos
+        </button>
+
+        <button
+            type="button"
+            data-reporte="empleados"
+        >
+            Empleados
+        </button>
+
+        <button
+            type="button"
+            data-reporte="clientes"
+        >
+            Clientes
+        </button>
+
+        <button
+            type="button"
+            data-reporte="proveedores"
+        >
+            Proveedores
+        </button>
+
+        <button
+            type="button"
+            data-reporte="stock"
+        >
+            Stock bajo
+        </button>
+
+        <button
+            type="button"
+            data-reporte="ventas"
+        >
+            Últimas ventas
+        </button>
+    </div>
+
+    <div
+        id="vistaReporteProductos"
+        class="vista-reporte activa"
+    >
+        <div class="tabla-reportes-contenedor">
+            <table class="tabla-reportes">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Producto</th>
+                        <th>Marca</th>
+                        <th>Unidades</th>
+                        <th>Venta neta</th>
+                        <th>Utilidad estimada</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaReporteProductos">
+                    <tr>
+                        <td
+                            colspan="6"
+                            class="fila-vacia"
+                        >
+                            Generando reporte...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div
+        id="vistaReporteEmpleados"
+        class="vista-reporte"
+    >
+        <div class="tabla-reportes-contenedor">
+            <table class="tabla-reportes">
+                <thead>
+                    <tr>
+                        <th>Empleado</th>
+                        <th>Rol</th>
+                        <th>Ventas</th>
+                        <th>Total vendido</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaReporteEmpleados"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div
+        id="vistaReporteClientes"
+        class="vista-reporte"
+    >
+        <div class="tabla-reportes-contenedor">
+            <table class="tabla-reportes">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Cliente</th>
+                        <th>Ventas</th>
+                        <th>Total comprado</th>
+                        <th>Última compra</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaReporteClientes"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div
+        id="vistaReporteProveedores"
+        class="vista-reporte"
+    >
+        <div class="tabla-reportes-contenedor">
+            <table class="tabla-reportes">
+                <thead>
+                    <tr>
+                        <th>NIT</th>
+                        <th>Proveedor</th>
+                        <th>Compras</th>
+                        <th>Total comprado</th>
+                        <th>Última compra</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaReporteProveedores"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div
+        id="vistaReporteStock"
+        class="vista-reporte"
+    >
+        <div class="tabla-reportes-contenedor">
+            <table class="tabla-reportes">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Producto</th>
+                        <th>Proveedor</th>
+                        <th>Stock actual</th>
+                        <th>Reservado</th>
+                        <th>Disponible</th>
+                        <th>Mínimo</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaReporteStock"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div
+        id="vistaReporteVentas"
+        class="vista-reporte"
+    >
+        <div class="tabla-reportes-contenedor">
+            <table class="tabla-reportes">
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Vendedor</th>
+                        <th>Método</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaReporteVentas"></tbody>
+            </table>
+        </div>
+    </div>
+</section>

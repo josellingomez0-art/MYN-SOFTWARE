@@ -1,0 +1,84 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+/* 🔹 NAVBAR */
+.navbar {
+    background: #0a8f2f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+/* 🔹 LAYOUT */
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+/* IZQUIERDA */
+.ventas-left {
+    width: 65%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.ventas-left input {
+    padding: 10px;
+    margin: 5px;
+}
+
+.ventas-left button {
+    background: green;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+/* TABLA */
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+/* DERECHA */
+.ventas-right {
+    width: 30%;
+    margin-left: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn-confirmar {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+}
+
+.btn-cancelar {
+    background: red;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+}

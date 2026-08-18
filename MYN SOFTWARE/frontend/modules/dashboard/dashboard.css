@@ -1,0 +1,425 @@
+/*==================================================
+                MYN SOFTWARE
+                 DASHBOARD
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f3f3f3;
+
+}
+
+.dashboard{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/*======================================
+            SIDEBAR
+=======================================*/
+
+.sidebar{
+
+    width:260px;
+
+    background:#0b9b28;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:3px 0 10px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+    text-align:center;
+
+    padding:25px;
+
+}
+
+.logo img{
+
+    width:120px;
+
+    margin-bottom:10px;
+
+}
+
+.logo h2{
+
+    font-size:30px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    padding:18px 25px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:17px;
+
+}
+
+.sidebar li:hover{
+
+    background:#08761f;
+
+}
+
+.activo{
+
+    background:#066519;
+
+}
+
+/*======================================
+            CONTENIDO
+=======================================*/
+
+.contenido{
+
+    flex:1;
+
+    padding:30px;
+
+}
+
+/*======================================
+            TOPBAR
+=======================================*/
+
+.topbar{
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+
+}
+
+.topbar h1{
+
+    color:#0b9b28;
+
+}
+
+.usuario{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.usuario button{
+
+    background:#0b9b28;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.usuario button:hover{
+
+    background:#08761f;
+
+}
+
+/*======================================
+            TARJETAS
+=======================================*/
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+    margin-bottom:30px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-left:6px solid #0b9b28;
+
+    border-radius:10px;
+
+    padding:25px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.card h3{
+
+    color:#666;
+
+    margin-bottom:12px;
+
+}
+
+.card p{
+
+    font-size:28px;
+
+    color:#0b9b28;
+
+    font-weight:bold;
+
+}
+
+/*======================================
+            TABLAS
+=======================================*/
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+}
+
+.panel{
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.panel h2{
+
+    margin-bottom:20px;
+
+    color:#0b9b28;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#0b9b28;
+
+    color:white;
+
+    padding:12px;
+
+}
+
+td{
+
+    padding:12px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+/*======================================
+        ACCESOS RÁPIDOS
+=======================================*/
+
+.acciones{
+
+    margin-top:30px;
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.acciones button{
+
+    background:#0b9b28;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 22px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.acciones button:hover{
+
+    background:#08761f;
+
+}
+
+/*======================================
+            RESPONSIVE
+=======================================*/
+
+@media(max-width:1100px){
+
+.cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.dashboard-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard{
+
+flex-direction:column;
+
+}
+
+.sidebar{
+
+width:100%;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+gap:15px;
+
+text-align:center;
+
+}
+
+.acciones{
+
+flex-wrap:wrap;
+
+}
+
+}
+
+/*======================================
+            ICONOS TARJETAS
+=======================================*/
+
+.card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.icono{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#0b9b28;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    flex-shrink:0;
+
+}
+
+.card h3{
+
+    margin-bottom:8px;
+
+}

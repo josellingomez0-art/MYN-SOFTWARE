@@ -1,0 +1,391 @@
+<section
+    class="compras"
+    aria-labelledby="tituloCompras"
+>
+    <div class="compras-cabecera">
+        <div>
+            <h1 id="tituloCompras">
+                Compras
+            </h1>
+
+            <p>
+                Registra entradas de mercancía
+                y consulta su historial.
+            </p>
+        </div>
+    </div>
+
+    <div
+        id="mensajeCompras"
+        class="mensaje-compras"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="tabs-compras">
+        <button
+            id="tabNuevaCompra"
+            type="button"
+            class="activo"
+            data-vista="nueva"
+        >
+            Nueva compra
+        </button>
+
+        <button
+            id="tabHistorialCompras"
+            type="button"
+            data-vista="historial"
+        >
+            Historial
+        </button>
+    </div>
+
+    <div
+        id="vistaNuevaCompra"
+        class="vista-compras activa"
+    >
+        <div class="compra-grid">
+            <div class="catalogo-compra">
+                <h2>Productos</h2>
+
+                <input
+                    id="buscarProductoCompra"
+                    type="search"
+                    placeholder="Buscar por código, nombre o marca..."
+                    autocomplete="off"
+                >
+
+                <div
+                    id="listaProductosCompra"
+                    class="lista-productos-compra"
+                >
+                    Cargando productos...
+                </div>
+            </div>
+
+            <div class="detalle-compra">
+                <h2>Datos de la compra</h2>
+
+                <div class="fila-dos">
+                    <div class="campo-compra">
+                        <label for="proveedorCompra">
+                            Proveedor *
+                        </label>
+
+                        <select
+                            id="proveedorCompra"
+                            required
+                        ></select>
+                    </div>
+
+                    <div class="campo-compra">
+                        <label for="facturaProveedor">
+                            Factura del proveedor
+                        </label>
+
+                        <input
+                            id="facturaProveedor"
+                            type="text"
+                            maxlength="60"
+                            placeholder="Ejemplo: FV-1025"
+                        >
+                    </div>
+                </div>
+
+                <div class="fila-dos">
+                    <div class="campo-compra">
+                        <label for="formaPagoCompra">
+                            Forma de pago
+                        </label>
+
+                        <select id="formaPagoCompra">
+                            <option value="CONTADO">
+                                Contado
+                            </option>
+
+                            <option value="CREDITO">
+                                Crédito
+                            </option>
+                        </select>
+                    </div>
+
+                    <div
+                        id="campoVencimientoCompra"
+                        class="campo-compra"
+                        hidden
+                    >
+                        <label for="fechaVencimientoCompra">
+                            Fecha de vencimiento *
+                        </label>
+
+                        <input
+                            id="fechaVencimientoCompra"
+                            type="date"
+                        >
+                    </div>
+                </div>
+
+                <div class="tabla-carrito-compra">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Costo</th>
+                                <th>Desc.</th>
+                                <th>IVA %</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaCarritoCompra">
+                            <tr>
+                                <td
+                                    colspan="7"
+                                    class="fila-vacia"
+                                >
+                                    Sin productos agregados.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="campo-compra">
+                    <label for="observacionesCompra">
+                        Observaciones
+                    </label>
+
+                    <textarea
+                        id="observacionesCompra"
+                        rows="3"
+                        maxlength="500"
+                        placeholder="Información adicional de la compra"
+                    ></textarea>
+                </div>
+
+                <div class="totales-compra">
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="subtotalCompra">
+                            $0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Descuento</span>
+                        <strong id="descuentoCompra">
+                            $0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>IVA</span>
+                        <strong id="ivaCompra">
+                            $0
+                        </strong>
+                    </div>
+
+                    <div class="total-final-compra">
+                        <span>Total</span>
+                        <strong id="totalCompra">
+                            $0
+                        </strong>
+                    </div>
+                </div>
+
+                <button
+                    id="btnRegistrarCompra"
+                    type="button"
+                    class="btn-principal"
+                >
+                    Registrar compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div
+        id="vistaHistorialCompras"
+        class="vista-compras"
+    >
+        <div class="filtros-compras">
+            <input
+                id="buscarCompra"
+                type="search"
+                placeholder="Número, factura, proveedor o NIT..."
+            >
+
+            <select id="filtroProveedorCompra">
+                <option value="">
+                    Todos los proveedores
+                </option>
+            </select>
+
+            <select id="filtroEstadoCompra">
+                <option value="todos">
+                    Todos los estados
+                </option>
+
+                <option value="CONFIRMADA">
+                    Confirmadas
+                </option>
+
+                <option value="ANULADA">
+                    Anuladas
+                </option>
+            </select>
+
+            <input
+                id="fechaDesdeCompra"
+                type="date"
+                aria-label="Fecha inicial"
+            >
+
+            <input
+                id="fechaHastaCompra"
+                type="date"
+                aria-label="Fecha final"
+            >
+
+            <button
+                id="btnFiltrarCompras"
+                type="button"
+                class="btn-secundario"
+            >
+                Filtrar
+            </button>
+        </div>
+
+        <div class="tabla-historial-compras">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Fecha</th>
+                        <th>Proveedor</th>
+                        <th>Factura</th>
+                        <th>Pago</th>
+                        <th>Productos</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaHistorialCompras">
+                    <tr>
+                        <td
+                            colspan="9"
+                            class="fila-vacia"
+                        >
+                            Cargando compras...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div
+    id="modalDetalleCompra"
+    class="modal-compras-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-compras modal-detalle-compra"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloDetalleCompra"
+    >
+        <div class="modal-compras-cabecera">
+            <h2 id="tituloDetalleCompra">
+                Detalle de compra
+            </h2>
+
+            <button
+                id="btnCerrarDetalleCompra"
+                type="button"
+                class="btn-cerrar"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div id="contenidoDetalleCompra">
+            Cargando...
+        </div>
+    </div>
+</div>
+
+<div
+    id="modalAnularCompra"
+    class="modal-compras-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-compras"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloAnularCompra"
+    >
+        <form id="formAnularCompra">
+            <div class="modal-compras-cabecera">
+                <h2 id="tituloAnularCompra">
+                    Anular compra
+                </h2>
+
+                <button
+                    id="btnCerrarAnulacionCompra"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="idCompraAnular"
+                type="hidden"
+            >
+
+            <p id="textoCompraAnular"></p>
+
+            <div class="campo-compra">
+                <label for="motivoAnulacionCompra">
+                    Motivo de anulación *
+                </label>
+
+                <textarea
+                    id="motivoAnulacionCompra"
+                    rows="4"
+                    maxlength="250"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarAnulacionCompra"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnConfirmarAnulacionCompra"
+                    type="submit"
+                    class="btn-peligro"
+                >
+                    Anular compra
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

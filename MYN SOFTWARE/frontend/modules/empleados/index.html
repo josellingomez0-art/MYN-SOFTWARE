@@ -1,0 +1,454 @@
+<section
+    class="empleados"
+    aria-labelledby="tituloEmpleados"
+>
+    <div class="empleados-cabecera">
+        <div>
+            <h1 id="tituloEmpleados">
+                Empleados
+            </h1>
+
+            <p>
+                Administra usuarios, roles,
+                accesos y actividad comercial.
+            </p>
+        </div>
+
+        <button
+            id="btnNuevoEmpleado"
+            type="button"
+            class="btn-principal"
+        >
+            + Nuevo empleado
+        </button>
+    </div>
+
+    <div
+        id="mensajeEmpleados"
+        class="mensaje-empleados"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="resumen-empleados">
+        <article>
+            <span>Total empleados</span>
+            <strong id="totalEmpleados">0</strong>
+        </article>
+
+        <article>
+            <span>Activos</span>
+            <strong id="empleadosActivos">0</strong>
+        </article>
+
+        <article>
+            <span>Inactivos</span>
+            <strong id="empleadosInactivos">0</strong>
+        </article>
+
+        <article>
+            <span>Roles asignados</span>
+            <strong id="rolesAsignados">0</strong>
+        </article>
+    </div>
+
+    <div class="filtros-empleados">
+        <input
+            id="buscarEmpleado"
+            type="search"
+            placeholder="Buscar por documento, nombre, correo, teléfono o rol..."
+            autocomplete="off"
+        >
+
+        <select id="filtroRolEmpleado">
+            <option value="">
+                Todos los roles
+            </option>
+        </select>
+
+        <select id="filtroEstadoEmpleado">
+            <option value="todos">
+                Todos
+            </option>
+
+            <option value="activos">
+                Activos
+            </option>
+
+            <option value="inactivos">
+                Inactivos
+            </option>
+        </select>
+    </div>
+
+    <div class="tabla-empleados-contenedor">
+        <table class="tabla-empleados">
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Empleado</th>
+                    <th>Rol</th>
+                    <th>Contacto</th>
+                    <th>Ventas</th>
+                    <th>Total vendido</th>
+                    <th>Compras</th>
+                    <th>Último acceso</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaEmpleados">
+                <tr>
+                    <td
+                        colspan="10"
+                        class="fila-vacia"
+                    >
+                        Cargando empleados...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div
+    id="modalEmpleado"
+    class="modal-empleados-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-empleados"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalEmpleado"
+    >
+        <form
+            id="formEmpleado"
+            novalidate
+        >
+            <div class="modal-empleados-cabecera">
+                <h2 id="tituloModalEmpleado">
+                    Nuevo empleado
+                </h2>
+
+                <button
+                    id="btnCerrarEmpleado"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="empleadoId"
+                type="hidden"
+            >
+
+            <div class="fila-dos">
+                <div class="campo-empleado">
+                    <label for="nombresEmpleado">
+                        Nombres *
+                    </label>
+
+                    <input
+                        id="nombresEmpleado"
+                        type="text"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+
+                <div class="campo-empleado">
+                    <label for="apellidosEmpleado">
+                        Apellidos *
+                    </label>
+
+                    <input
+                        id="apellidosEmpleado"
+                        type="text"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-empleado">
+                    <label for="documentoEmpleado">
+                        Documento
+                    </label>
+
+                    <input
+                        id="documentoEmpleado"
+                        type="text"
+                        maxlength="30"
+                    >
+                </div>
+
+                <div class="campo-empleado">
+                    <label for="rolEmpleado">
+                        Rol *
+                    </label>
+
+                    <select
+                        id="rolEmpleado"
+                        required
+                    ></select>
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-empleado">
+                    <label for="telefonoEmpleado">
+                        Teléfono
+                    </label>
+
+                    <input
+                        id="telefonoEmpleado"
+                        type="text"
+                        maxlength="30"
+                    >
+                </div>
+
+                <div class="campo-empleado">
+                    <label for="correoEmpleado">
+                        Correo electrónico *
+                    </label>
+
+                    <input
+                        id="correoEmpleado"
+                        type="email"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div
+                id="campoPasswordEmpleado"
+                class="campo-empleado"
+            >
+                <label for="passwordEmpleado">
+                    Contraseña *
+                </label>
+
+                <input
+                    id="passwordEmpleado"
+                    type="password"
+                    autocomplete="new-password"
+                >
+
+                <small>
+                    Mínimo 8 caracteres, una mayúscula,
+                    una minúscula y un número.
+                </small>
+            </div>
+
+            <label
+                id="campoEstadoEmpleado"
+                class="check-empleado"
+            >
+                <input
+                    id="estadoEmpleado"
+                    type="checkbox"
+                    checked
+                >
+
+                Empleado activo
+            </label>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarEmpleado"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnGuardarEmpleado"
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Guardar empleado
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div
+    id="modalPasswordEmpleado"
+    class="modal-empleados-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-empleados modal-password"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloPasswordEmpleado"
+    >
+        <form id="formPasswordEmpleado">
+            <div class="modal-empleados-cabecera">
+                <h2 id="tituloPasswordEmpleado">
+                    Cambiar contraseña
+                </h2>
+
+                <button
+                    id="btnCerrarPasswordEmpleado"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="idPasswordEmpleado"
+                type="hidden"
+            >
+
+            <p id="nombrePasswordEmpleado"></p>
+
+            <div class="campo-empleado">
+                <label for="nuevaPasswordEmpleado">
+                    Nueva contraseña
+                </label>
+
+                <input
+                    id="nuevaPasswordEmpleado"
+                    type="password"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <div class="campo-empleado">
+                <label for="confirmarPasswordEmpleado">
+                    Confirmar contraseña
+                </label>
+
+                <input
+                    id="confirmarPasswordEmpleado"
+                    type="password"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarPasswordEmpleado"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnGuardarPasswordEmpleado"
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Actualizar contraseña
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div
+    id="modalActividadEmpleado"
+    class="modal-empleados-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-empleados modal-actividad"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloActividadEmpleado"
+    >
+        <div class="modal-empleados-cabecera">
+            <h2 id="tituloActividadEmpleado">
+                Actividad del empleado
+            </h2>
+
+            <button
+                id="btnCerrarActividadEmpleado"
+                type="button"
+                class="btn-cerrar"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div id="resumenActividadEmpleado"></div>
+
+        <div class="tabs-actividad">
+            <button
+                id="tabVentasEmpleado"
+                type="button"
+                class="activo"
+            >
+                Ventas
+            </button>
+
+            <button
+                id="tabComprasEmpleado"
+                type="button"
+            >
+                Compras
+            </button>
+        </div>
+
+        <div
+            id="vistaVentasEmpleado"
+            class="vista-actividad activa"
+        >
+            <div class="tabla-actividad-contenedor">
+                <table class="tabla-empleados">
+                    <thead>
+                        <tr>
+                            <th>Factura</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Método</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaVentasEmpleado"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div
+            id="vistaComprasEmpleado"
+            class="vista-actividad"
+        >
+            <div class="tabla-actividad-contenedor">
+                <table class="tabla-empleados">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Fecha</th>
+                            <th>Proveedor</th>
+                            <th>Pago</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaComprasEmpleado"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

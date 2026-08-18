@@ -1,0 +1,376 @@
+.reportes {
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, .08);
+}
+
+.reportes-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.reportes-cabecera h1 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.reportes-cabecera p {
+    margin: 6px 0 0;
+    color: #666;
+}
+
+.acciones-reportes {
+    display: flex;
+    gap: 9px;
+}
+
+.btn-principal,
+.btn-secundario {
+    border-radius: 7px;
+    padding: 10px 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-principal {
+    border: 0;
+    background: #079c2c;
+    color: #fff;
+}
+
+.btn-secundario {
+    border: 1px solid #079c2c;
+    background: #fff;
+    color: #079c2c;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.filtros-reportes {
+    display: grid;
+    grid-template-columns:
+        minmax(160px, 1fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr)
+        auto;
+    align-items: end;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 9px;
+    background: #f5faf6;
+}
+
+.campo-reporte label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.campo-reporte input,
+.campo-reporte select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #ccd4cf;
+    border-radius: 7px;
+    font: inherit;
+}
+
+.campo-reporte input:focus,
+.campo-reporte select:focus {
+    outline:
+        2px solid
+        rgba(7, 156, 44, .16);
+    border-color: #079c2c;
+}
+
+.resumen-reportes {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(170px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.resumen-reportes article {
+    display: grid;
+    gap: 7px;
+    padding: 16px;
+    border-left: 5px solid #079c2c;
+    border-radius: 9px;
+    background: #f8fbf9;
+}
+
+.resumen-reportes span {
+    color: #666;
+}
+
+.resumen-reportes strong {
+    color: #079c2c;
+    font-size: 23px;
+}
+
+.resumen-reportes small {
+    color: #777;
+}
+
+.graficos-reportes {
+    display: grid;
+    grid-template-columns:
+        minmax(500px, 1.6fr)
+        minmax(270px, .8fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.panel-reporte {
+    padding: 17px;
+    border: 1px solid #e0e5e1;
+    border-radius: 10px;
+}
+
+.panel-reporte h2 {
+    margin: 0;
+    color: #079c2c;
+    font-size: 19px;
+}
+
+.panel-reporte-titulo {
+    margin-bottom: 14px;
+}
+
+.grafico-contenedor {
+    width: 100%;
+    min-height: 320px;
+}
+
+.grafico-contenedor canvas {
+    display: block;
+    width: 100%;
+}
+
+.barras-reportes {
+    display: grid;
+    gap: 15px;
+}
+
+.barra-reporte {
+    display: grid;
+    gap: 6px;
+}
+
+.barra-reporte-datos {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.barra-reporte-fondo {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e5e8e6;
+}
+
+.barra-reporte-valor {
+    height: 100%;
+    min-width: 3px;
+    border-radius: inherit;
+    background: #079c2c;
+}
+
+.barra-reporte small {
+    color: #777;
+}
+
+.tabs-reportes {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 17px;
+}
+
+.tabs-reportes button {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    padding: 11px 15px;
+    background: transparent;
+    color: #555;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.tabs-reportes button.activo {
+    border-bottom-color: #079c2c;
+    color: #079c2c;
+}
+
+.vista-reporte {
+    display: none;
+}
+
+.vista-reporte.activa {
+    display: block;
+}
+
+.tabla-reportes-contenedor {
+    overflow: auto;
+}
+
+.tabla-reportes {
+    width: 100%;
+    min-width: 880px;
+    border-collapse: collapse;
+}
+
+.tabla-reportes th {
+    padding: 11px 9px;
+    background: #079c2c;
+    color: #fff;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabla-reportes td {
+    padding: 11px 9px;
+    border-bottom: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+.tabla-reportes tbody tr:hover {
+    background: #f7fbf8;
+}
+
+.estado-reporte {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.estado-reporte.valido {
+    color: #087b28;
+    background: #dff4e5;
+}
+
+.estado-reporte.anulado {
+    color: #a82222;
+    background: #fbe2e2;
+}
+
+.fila-vacia {
+    padding: 24px !important;
+    color: #777;
+    text-align: center;
+}
+
+.mensaje-reportes {
+    display: none;
+    margin-bottom: 15px;
+    padding: 11px 14px;
+    border-radius: 7px;
+}
+
+.mensaje-reportes.visible {
+    display: block;
+}
+
+.mensaje-reportes.exito {
+    color: #086b25;
+    background: #e2f5e7;
+}
+
+.mensaje-reportes.error {
+    color: #9b1c1c;
+    background: #fde7e7;
+}
+
+@media (max-width: 1100px) {
+    .graficos-reportes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .resumen-reportes {
+        grid-template-columns:
+            repeat(2, minmax(170px, 1fr));
+    }
+
+    .filtros-reportes {
+        grid-template-columns:
+            repeat(2, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .reportes {
+        padding: 16px;
+    }
+
+    .reportes-cabecera {
+        flex-direction: column;
+    }
+
+    .acciones-reportes {
+        width: 100%;
+    }
+
+    .acciones-reportes button {
+        flex: 1;
+    }
+
+    .resumen-reportes,
+    .filtros-reportes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    body {
+        background: #fff !important;
+    }
+
+    #sidebarContainer,
+    #topbarContainer,
+    #footerContainer,
+    .acciones-reportes,
+    .filtros-reportes,
+    .tabs-reportes,
+    .mensaje-reportes {
+        display: none !important;
+    }
+
+    .reportes {
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .graficos-reportes {
+        grid-template-columns: 1fr;
+    }
+
+    .vista-reporte {
+        display: block !important;
+        margin-top: 22px;
+        page-break-inside: avoid;
+    }
+
+    .tabla-reportes {
+        min-width: 0;
+        font-size: 10px;
+    }
+}

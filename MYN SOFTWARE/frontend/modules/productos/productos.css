@@ -1,0 +1,310 @@
+.productos {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, .08);
+}
+
+.productos .titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.productos h1 {
+    color: #079c2c;
+    margin: 0;
+}
+
+.subtitulo {
+    color: #666;
+    margin-top: 5px;
+}
+
+#btnNuevo,
+.btn-guardar {
+    background: #079c2c;
+    color: #fff;
+    border: 0;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.barra {
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 1fr)
+        180px;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.barra input,
+.barra select,
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #cfd5d2;
+    border-radius: 7px;
+    font: inherit;
+}
+
+.barra input:focus,
+.barra select:focus,
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline:
+        2px solid
+        rgba(7, 156, 44, .18);
+
+    border-color: #079c2c;
+}
+
+.tabla-contenedor {
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 980px;
+}
+
+th {
+    background: #079c2c;
+    color: #fff;
+    padding: 12px 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom:
+        1px solid #e7e7e7;
+
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #f7fbf8;
+}
+
+.detalle {
+    display: block;
+    color: #777;
+    margin-top: 3px;
+}
+
+.acciones {
+    display: flex;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.acciones button {
+    border: 0;
+    border-radius: 6px;
+    padding: 7px 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-editar {
+    background: #1976d2;
+}
+
+.btn-desactivar {
+    background: #c62828;
+}
+
+.btn-activar {
+    background: #2e7d32;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.badge.activo {
+    background: #dff4e5;
+    color: #087b28;
+}
+
+.badge.inactivo {
+    background: #fbe2e2;
+    color: #a82222;
+}
+
+.stock-bajo {
+    color: #b42318;
+    font-weight: 800;
+}
+
+.mensaje-vacio {
+    text-align: center;
+    color: #777;
+    padding: 24px;
+}
+
+.mensaje-vacio.error {
+    color: #b42318;
+}
+
+.mensaje {
+    display: none;
+    margin-bottom: 15px;
+    padding: 11px 14px;
+    border-radius: 7px;
+}
+
+.mensaje.visible {
+    display: block;
+}
+
+.mensaje.exito {
+    background: #e2f5e7;
+    color: #086b25;
+}
+
+.mensaje.error {
+    background: #fde7e7;
+    color: #9b1c1c;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background:
+        rgba(0, 0, 0, .5);
+
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1200;
+}
+
+.modal-overlay.activo {
+    display: flex;
+}
+
+.modal {
+    background: #fff;
+    width: min(760px, 100%);
+    max-height: 92vh;
+    overflow: auto;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.modal-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.modal h2 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.btn-icono {
+    background: transparent;
+    border: 0;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.fila-dos,
+.fila-tres {
+    display: grid;
+    gap: 13px;
+}
+
+.fila-dos {
+    grid-template-columns:
+        1fr 1fr;
+}
+
+.fila-tres {
+    grid-template-columns:
+        1fr 1fr 1fr;
+}
+
+.campo {
+    margin-bottom: 13px;
+}
+
+.campo label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.campo small {
+    display: block;
+    color: #777;
+    margin-top: 5px;
+}
+
+.check {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 8px 0 16px;
+}
+
+.modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancelar {
+    border: 0;
+    background: #e7e7e7;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 760px) {
+    .productos {
+        padding: 16px;
+    }
+
+    .productos .titulo {
+        flex-direction: column;
+    }
+
+    .barra,
+    .fila-dos,
+    .fila-tres {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        padding: 17px;
+    }
+}

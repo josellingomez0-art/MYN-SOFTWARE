@@ -1,0 +1,294 @@
+<section
+    class="inventario"
+    aria-labelledby="tituloInventario"
+>
+    <div class="inventario-cabecera">
+        <div>
+            <h1 id="tituloInventario">
+                Inventario
+            </h1>
+
+            <p>
+                Consulta existencias,
+                alertas y movimientos.
+            </p>
+        </div>
+
+        <button
+            id="btnVerHistorial"
+            type="button"
+            class="btn-secundario"
+        >
+            Ver historial
+        </button>
+    </div>
+
+    <div
+        id="mensajeInventario"
+        class="mensaje-inventario"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="resumen-inventario">
+        <article>
+            <span>Productos</span>
+            <strong id="resumenProductos">0</strong>
+        </article>
+
+        <article>
+            <span>Unidades disponibles</span>
+            <strong id="resumenUnidades">0</strong>
+        </article>
+
+        <article>
+            <span>Stock bajo</span>
+            <strong id="resumenBajo">0</strong>
+        </article>
+
+        <article>
+            <span>Agotados</span>
+            <strong id="resumenAgotados">0</strong>
+        </article>
+    </div>
+
+    <div class="filtros-inventario">
+        <input
+            id="buscarInventario"
+            type="search"
+            placeholder="Buscar por código, producto, marca o categoría..."
+            autocomplete="off"
+        >
+
+        <select id="filtroStock">
+            <option value="todos">
+                Todos los estados
+            </option>
+
+            <option value="normal">
+                Stock normal
+            </option>
+
+            <option value="bajo">
+                Stock bajo
+            </option>
+
+            <option value="agotado">
+                Agotados
+            </option>
+        </select>
+    </div>
+
+    <div class="tabla-inventario-contenedor">
+        <table class="tabla-inventario">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Actual</th>
+                    <th>Reservado</th>
+                    <th>Disponible</th>
+                    <th>Mínimo</th>
+                    <th>Ubicación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaInventario">
+                <tr>
+                    <td
+                        colspan="10"
+                        class="fila-vacia"
+                    >
+                        Cargando inventario...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div
+    id="modalAjusteInventario"
+    class="modal-inventario-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-inventario"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalAjuste"
+    >
+        <form
+            id="formAjusteInventario"
+            novalidate
+        >
+            <div class="modal-inventario-cabecera">
+                <h2 id="tituloModalAjuste">
+                    Ajustar inventario
+                </h2>
+
+                <button
+                    id="btnCerrarAjuste"
+                    type="button"
+                    class="btn-cerrar-modal"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="idProductoInventario"
+                type="hidden"
+            >
+
+            <div
+                id="productoAjuste"
+                class="producto-ajuste"
+            ></div>
+
+            <div class="campo-inventario">
+                <label for="tipoMovimiento">
+                    Tipo de movimiento
+                </label>
+
+                <select id="tipoMovimiento">
+                    <option value="ENTRADA">
+                        Entrada de unidades
+                    </option>
+
+                    <option value="SALIDA">
+                        Salida de unidades
+                    </option>
+
+                    <option value="AJUSTE">
+                        Establecer cantidad exacta
+                    </option>
+                </select>
+            </div>
+
+            <div class="campo-inventario">
+                <label for="cantidadMovimiento">
+                    Cantidad
+                </label>
+
+                <input
+                    id="cantidadMovimiento"
+                    type="number"
+                    min="1"
+                    step="1"
+                    value="1"
+                    required
+                >
+
+                <small id="ayudaCantidad">
+                    Cantidad que se agregará al stock.
+                </small>
+            </div>
+
+            <div class="campo-inventario">
+                <label for="motivoMovimiento">
+                    Motivo *
+                </label>
+
+                <textarea
+                    id="motivoMovimiento"
+                    rows="3"
+                    maxlength="250"
+                    placeholder="Ejemplo: corrección por conteo físico"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="campo-inventario">
+                <label for="ubicacionMovimiento">
+                    Ubicación
+                </label>
+
+                <input
+                    id="ubicacionMovimiento"
+                    type="text"
+                    maxlength="120"
+                    placeholder="Bodega, estante o sección"
+                >
+            </div>
+
+            <div class="modal-inventario-acciones">
+                <button
+                    id="btnCancelarAjuste"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnGuardarAjuste"
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Guardar ajuste
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div
+    id="modalHistorialInventario"
+    class="modal-inventario-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-inventario modal-historial"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloHistorial"
+    >
+        <div class="modal-inventario-cabecera">
+            <h2 id="tituloHistorial">
+                Historial de movimientos
+            </h2>
+
+            <button
+                id="btnCerrarHistorial"
+                type="button"
+                class="btn-cerrar-modal"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="tabla-historial-contenedor">
+            <table class="tabla-inventario">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Anterior</th>
+                        <th>Nuevo</th>
+                        <th>Usuario</th>
+                        <th>Motivo</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaHistorialInventario">
+                    <tr>
+                        <td
+                            colspan="8"
+                            class="fila-vacia"
+                        >
+                            Cargando historial...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

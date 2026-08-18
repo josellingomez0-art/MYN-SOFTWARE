@@ -1,0 +1,329 @@
+/*==================================================
+                MYN SOFTWARE
+                PRODUCTOS
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f3f3f3;
+
+    padding:30px;
+
+}
+
+.productos{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.titulo{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.titulo h1{
+
+    color:#0b9b28;
+
+}
+
+#btnNuevo{
+
+    background:#0b9b28;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+#btnNuevo:hover{
+
+    background:#08761f;
+
+}
+
+.barra{
+
+    margin-bottom:20px;
+
+}
+
+#buscar{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#0b9b28;
+
+    color:white;
+
+    padding:14px;
+
+}
+
+td{
+
+    padding:14px;
+
+    border-bottom:1px solid #ddd;
+
+    text-align:center;
+
+}
+
+tbody tr:hover{
+
+    background:#f8f8f8;
+
+}
+
+.acciones{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+}
+
+.btn-editar{
+
+    background:#2196F3;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 12px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.btn-eliminar{
+
+    background:#d32f2f;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 12px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.estado-activo{
+
+    color:#0b9b28;
+
+    font-weight:bold;
+
+}
+
+.estado-inactivo{
+
+    color:#d32f2f;
+
+    font-weight:bold;
+
+}
+
+.modal-overlay{
+
+    display:none;
+
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+
+    background:rgba(0,0,0,.45);
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:999;
+
+}
+
+.modal-overlay.activo{
+
+    display:flex;
+
+}
+
+.modal{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    width:100%;
+    max-width:480px;
+
+    max-height:90vh;
+    overflow-y:auto;
+
+}
+
+.modal h2{
+
+    color:#0b9b28;
+
+    margin-bottom:18px;
+
+}
+
+.campo{
+
+    margin-bottom:14px;
+
+}
+
+.campo label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+
+    width:100%;
+
+    padding:10px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+}
+
+.fila-dos{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+}
+
+.modal-acciones{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    margin-top:10px;
+
+}
+
+.btn-cancelar{
+
+    background:#e0e0e0;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+.btn-guardar{
+
+    background:#0b9b28;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.mensaje-vacio{
+
+    text-align:center;
+
+    color:#888;
+
+    padding:20px;
+
+}

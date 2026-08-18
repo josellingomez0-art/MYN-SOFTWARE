@@ -1,0 +1,445 @@
+.roles {
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, .08);
+}
+
+.roles-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.roles-cabecera h1 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.roles-cabecera p {
+    margin: 6px 0 0;
+    color: #666;
+}
+
+.btn-principal,
+.btn-secundario,
+.btn-editar,
+.btn-desactivar,
+.btn-activar,
+.btn-cancelar,
+.btn-modulo {
+    border: 0;
+    border-radius: 7px;
+    padding: 9px 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-principal {
+    background: #079c2c;
+    color: #fff;
+}
+
+.btn-secundario {
+    border: 1px solid #079c2c;
+    background: #fff;
+    color: #079c2c;
+}
+
+.btn-editar {
+    background: #1976d2;
+    color: #fff;
+}
+
+.btn-desactivar {
+    background: #c62828;
+    color: #fff;
+}
+
+.btn-activar {
+    background: #2e7d32;
+    color: #fff;
+}
+
+.btn-cancelar {
+    background: #e7e7e7;
+    color: #333;
+}
+
+.btn-modulo {
+    padding: 6px 9px;
+    background: #eef7f0;
+    color: #079c2c;
+    font-size: 12px;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.resumen-roles {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.resumen-roles article {
+    padding: 16px;
+    border-left: 5px solid #079c2c;
+    border-radius: 9px;
+    background: #f8fbf9;
+}
+
+.resumen-roles span {
+    display: block;
+    margin-bottom: 7px;
+    color: #666;
+}
+
+.resumen-roles strong {
+    color: #079c2c;
+    font-size: 24px;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(280px, .75fr)
+        minmax(560px, 1.7fr);
+    gap: 20px;
+}
+
+.panel-roles,
+.panel-permisos {
+    border: 1px solid #e1e5e2;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.filtros-roles {
+    display: grid;
+    grid-template-columns:
+        minmax(170px, 1fr)
+        145px;
+    gap: 9px;
+    margin-bottom: 14px;
+}
+
+.filtros-roles input,
+.filtros-roles select,
+.campo-rol input,
+.campo-rol textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #ccd4cf;
+    border-radius: 7px;
+    font: inherit;
+}
+
+.filtros-roles input:focus,
+.filtros-roles select:focus,
+.campo-rol input:focus,
+.campo-rol textarea:focus {
+    outline:
+        2px solid
+        rgba(7, 156, 44, .16);
+    border-color: #079c2c;
+}
+
+.lista-roles {
+    display: grid;
+    gap: 10px;
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+.tarjeta-rol {
+    border: 1px solid #dde4df;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+.tarjeta-rol.seleccionado {
+    border-color: #079c2c;
+    box-shadow:
+        0 0 0 2px
+        rgba(7, 156, 44, .12);
+}
+
+.rol-seleccionar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.rol-seleccionar > span:first-child {
+    display: grid;
+    gap: 4px;
+}
+
+.rol-seleccionar small {
+    color: #777;
+}
+
+.estado-rol {
+    display: inline-block;
+    height: fit-content;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.estado-rol.activo {
+    color: #087b28;
+    background: #dff4e5;
+}
+
+.estado-rol.inactivo {
+    color: #a82222;
+    background: #fbe2e2;
+}
+
+.datos-rol {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    color: #666;
+    font-size: 13px;
+}
+
+.acciones-rol {
+    display: flex;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.panel-permisos-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 13px;
+}
+
+.panel-permisos-cabecera h2 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.panel-permisos-cabecera p {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.acciones-permisos {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.matriz-permisos {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.grupo-permisos {
+    border: 1px solid #dde4df;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.grupo-permisos-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    background: #f4faf5;
+    border-bottom: 1px solid #dde4df;
+}
+
+.grupo-permisos-titulo h3 {
+    margin: 0;
+    color: #079c2c;
+    text-transform: capitalize;
+}
+
+.permisos-modulo {
+    display: grid;
+    gap: 8px;
+    padding: 11px;
+}
+
+.permiso-item {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    padding: 8px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.permiso-item:hover {
+    background: #f7fbf8;
+}
+
+.permiso-item input {
+    margin-top: 3px;
+}
+
+.permiso-item span {
+    display: grid;
+    gap: 3px;
+}
+
+.permiso-item small {
+    color: #777;
+}
+
+.mensaje-roles {
+    display: none;
+    margin-bottom: 15px;
+    padding: 11px 14px;
+    border-radius: 7px;
+}
+
+.mensaje-roles.visible {
+    display: block;
+}
+
+.mensaje-roles.exito {
+    color: #086b25;
+    background: #e2f5e7;
+}
+
+.mensaje-roles.error {
+    color: #9b1c1c;
+    background: #fde7e7;
+}
+
+.fila-vacia {
+    padding: 24px;
+    text-align: center;
+    color: #777;
+}
+
+.fila-vacia.error {
+    color: #a82222;
+}
+
+.modal-roles-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1400;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background:
+        rgba(0, 0, 0, .5);
+}
+
+.modal-roles-overlay.activo {
+    display: flex;
+}
+
+.modal-roles {
+    width: min(600px, 100%);
+    max-height: 92vh;
+    overflow: auto;
+    padding: 22px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.modal-roles-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.modal-roles-cabecera h2 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.btn-cerrar {
+    border: 0;
+    background: transparent;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.campo-rol {
+    margin-bottom: 14px;
+}
+
+.campo-rol label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.check-rol {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 18px;
+}
+
+.acciones-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+@media (max-width: 1100px) {
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 850px) {
+    .resumen-roles,
+    .matriz-permisos {
+        grid-template-columns:
+            repeat(2, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .roles {
+        padding: 16px;
+    }
+
+    .roles-cabecera,
+    .panel-permisos-cabecera {
+        flex-direction: column;
+    }
+
+    .resumen-roles,
+    .matriz-permisos,
+    .filtros-roles {
+        grid-template-columns: 1fr;
+    }
+}

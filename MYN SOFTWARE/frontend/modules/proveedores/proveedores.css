@@ -1,0 +1,368 @@
+.proveedores {
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, .08);
+}
+
+.proveedores-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.proveedores-cabecera h1 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.proveedores-cabecera p {
+    margin: 6px 0 0;
+    color: #666;
+}
+
+.btn-principal,
+.btn-historial,
+.btn-editar,
+.btn-desactivar,
+.btn-activar,
+.btn-cancelar {
+    border: 0;
+    border-radius: 7px;
+    padding: 9px 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-principal {
+    color: #fff;
+    background: #079c2c;
+}
+
+.btn-historial {
+    color: #fff;
+    background: #6a1b9a;
+}
+
+.btn-editar {
+    color: #fff;
+    background: #1976d2;
+}
+
+.btn-desactivar {
+    color: #fff;
+    background: #c62828;
+}
+
+.btn-activar {
+    color: #fff;
+    background: #2e7d32;
+}
+
+.btn-cancelar {
+    color: #333;
+    background: #e7e7e7;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.resumen-proveedores {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.resumen-proveedores article {
+    padding: 16px;
+    border-left: 5px solid #079c2c;
+    border-radius: 9px;
+    background: #f8fbf9;
+}
+
+.resumen-proveedores span {
+    display: block;
+    margin-bottom: 7px;
+    color: #666;
+}
+
+.resumen-proveedores strong {
+    color: #079c2c;
+    font-size: 24px;
+}
+
+.filtros-proveedores {
+    display: grid;
+    grid-template-columns:
+        minmax(250px, 1fr)
+        180px;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.filtros-proveedores input,
+.filtros-proveedores select,
+.campo-proveedor input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #ccd4cf;
+    border-radius: 7px;
+    font: inherit;
+}
+
+.filtros-proveedores input:focus,
+.filtros-proveedores select:focus,
+.campo-proveedor input:focus {
+    outline:
+        2px solid
+        rgba(7, 156, 44, .16);
+    border-color: #079c2c;
+}
+
+.tabla-proveedores-contenedor,
+.tabla-historial-proveedor {
+    overflow: auto;
+}
+
+.tabla-proveedores {
+    width: 100%;
+    min-width: 1220px;
+    border-collapse: collapse;
+}
+
+.tabla-proveedores th {
+    padding: 11px 9px;
+    background: #079c2c;
+    color: #fff;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabla-proveedores td {
+    padding: 11px 9px;
+    border-bottom: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+.tabla-proveedores tbody tr:hover {
+    background: #f7fbf8;
+}
+
+.tabla-proveedores small {
+    display: block;
+    margin-top: 3px;
+    color: #777;
+}
+
+.estado-proveedor {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.estado-proveedor.activo {
+    color: #087b28;
+    background: #dff4e5;
+}
+
+.estado-proveedor.inactivo {
+    color: #a82222;
+    background: #fbe2e2;
+}
+
+.acciones-proveedor {
+    display: flex;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.fila-vacia {
+    padding: 24px !important;
+    color: #777;
+    text-align: center;
+}
+
+.fila-vacia.error {
+    color: #a82222;
+}
+
+.mensaje-proveedores {
+    display: none;
+    margin-bottom: 15px;
+    padding: 11px 14px;
+    border-radius: 7px;
+}
+
+.mensaje-proveedores.visible {
+    display: block;
+}
+
+.mensaje-proveedores.exito {
+    color: #086b25;
+    background: #e2f5e7;
+}
+
+.mensaje-proveedores.error {
+    color: #9b1c1c;
+    background: #fde7e7;
+}
+
+.modal-proveedores-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1400;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background:
+        rgba(0, 0, 0, .5);
+}
+
+.modal-proveedores-overlay.activo {
+    display: flex;
+}
+
+.modal-proveedores {
+    width: min(720px, 100%);
+    max-height: 92vh;
+    overflow: auto;
+    padding: 22px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.modal-historial-proveedor {
+    width: min(1150px, 100%);
+}
+
+.modal-proveedores-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.modal-proveedores-cabecera h2 {
+    margin: 0;
+    color: #079c2c;
+}
+
+.btn-cerrar {
+    border: 0;
+    background: transparent;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.fila-dos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+}
+
+.campo-proveedor {
+    margin-bottom: 14px;
+}
+
+.campo-proveedor label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.check-proveedor {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 18px;
+}
+
+.acciones-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.resumen-historial {
+    display: grid;
+    grid-template-columns:
+        repeat(5, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 17px;
+    border-left: 4px solid #079c2c;
+    background: #f5faf6;
+}
+
+.resumen-historial p {
+    margin: 0;
+}
+
+.tabs-historial-proveedor {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabs-historial-proveedor button {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    padding: 10px 15px;
+    background: transparent;
+    color: #555;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tabs-historial-proveedor button.activo {
+    border-bottom-color: #079c2c;
+    color: #079c2c;
+}
+
+.vista-historial {
+    display: none;
+}
+
+.vista-historial.activa {
+    display: block;
+}
+
+@media (max-width: 950px) {
+    .resumen-proveedores,
+    .resumen-historial {
+        grid-template-columns:
+            repeat(2, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .proveedores {
+        padding: 16px;
+    }
+
+    .proveedores-cabecera {
+        flex-direction: column;
+    }
+
+    .resumen-proveedores,
+    .resumen-historial,
+    .filtros-proveedores,
+    .fila-dos {
+        grid-template-columns: 1fr;
+    }
+}

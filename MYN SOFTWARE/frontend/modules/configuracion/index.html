@@ -1,0 +1,260 @@
+<section
+    class="configuracion"
+    aria-labelledby="tituloConfiguracion"
+>
+    <div class="configuracion-cabecera">
+        <div>
+            <h1 id="tituloConfiguracion">
+                Configuración
+            </h1>
+
+            <p>
+                Administra los datos de la empresa
+                y los parámetros generales del sistema.
+            </p>
+        </div>
+    </div>
+
+    <div
+        id="mensajeConfiguracion"
+        class="mensaje-configuracion"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="configuracion-contenido">
+        <article class="configuracion-card">
+            <div class="configuracion-card-cabecera">
+                <div>
+                    <h2>
+                        Datos de la empresa
+                    </h2>
+
+                    <p>
+                        Información utilizada en comprobantes,
+                        facturas y reportes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="configuracion-card-cuerpo">
+                <form
+                    id="formEmpresa"
+                    novalidate
+                >
+                    <div class="configuracion-grid">
+                        <div class="campo-configuracion">
+                            <label for="empNombre">
+                                Nombre de la empresa *
+                            </label>
+
+                            <input
+                                id="empNombre"
+                                type="text"
+                                maxlength="150"
+                                autocomplete="organization"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="empNit">
+                                NIT
+                            </label>
+
+                            <input
+                                id="empNit"
+                                type="text"
+                                maxlength="30"
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="empPropietario">
+                                Propietario o representante
+                            </label>
+
+                            <input
+                                id="empPropietario"
+                                type="text"
+                                maxlength="150"
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="empTelefono">
+                                Teléfono
+                            </label>
+
+                            <input
+                                id="empTelefono"
+                                type="text"
+                                maxlength="30"
+                                autocomplete="tel"
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="empCorreo">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                id="empCorreo"
+                                type="email"
+                                maxlength="150"
+                                autocomplete="email"
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="empCiudad">
+                                Ciudad
+                            </label>
+
+                            <input
+                                id="empCiudad"
+                                type="text"
+                                maxlength="100"
+                                autocomplete="address-level2"
+                            >
+                        </div>
+
+                        <div
+                            class="campo-configuracion campo-completo"
+                        >
+                            <label for="empDireccion">
+                                Dirección
+                            </label>
+
+                            <input
+                                id="empDireccion"
+                                type="text"
+                                maxlength="200"
+                                autocomplete="street-address"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="acciones-configuracion">
+                        <button
+                            id="btnGuardarEmpresa"
+                            type="submit"
+                            class="btn-principal"
+                        >
+                            Guardar datos de la empresa
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </article>
+
+        <article class="configuracion-card">
+            <div class="configuracion-card-cabecera">
+                <div>
+                    <h2>
+                        Parámetros del sistema
+                    </h2>
+
+                    <p>
+                        Valores predeterminados utilizados
+                        en ventas, compras e impresión.
+                    </p>
+                </div>
+            </div>
+
+            <div class="configuracion-card-cuerpo">
+                <form
+                    id="formConfiguracion"
+                    novalidate
+                >
+                    <div class="configuracion-grid">
+                        <div class="campo-configuracion">
+                            <label for="cfgIva">
+                                IVA predeterminado (%) *
+                            </label>
+
+                            <input
+                                id="cfgIva"
+                                type="number"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="cfgMoneda">
+                                Moneda *
+                            </label>
+
+                            <select
+                                id="cfgMoneda"
+                                required
+                            >
+                                <option value="COP">
+                                    Peso colombiano (COP)
+                                </option>
+
+                                <option value="USD">
+                                    Dólar estadounidense (USD)
+                                </option>
+
+                                <option value="EUR">
+                                    Euro (EUR)
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="cfgSimbolo">
+                                Símbolo monetario *
+                            </label>
+
+                            <input
+                                id="cfgSimbolo"
+                                type="text"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-configuracion">
+                            <label for="cfgImpresora">
+                                Impresora predeterminada
+                            </label>
+
+                            <input
+                                id="cfgImpresora"
+                                type="text"
+                                maxlength="150"
+                                placeholder="Ejemplo: POS-80"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="vista-previa-moneda">
+                        <span>
+                            Vista previa monetaria
+                        </span>
+
+                        <strong id="vistaPreviaMoneda">
+                            $ 1.000.000
+                        </strong>
+                    </div>
+
+                    <div class="acciones-configuracion">
+                        <button
+                            id="btnGuardarConfiguracion"
+                            type="submit"
+                            class="btn-principal"
+                        >
+                            Guardar parámetros
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </div>
+</section>

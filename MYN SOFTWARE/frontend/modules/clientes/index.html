@@ -1,0 +1,356 @@
+<section
+    class="clientes"
+    aria-labelledby="tituloClientes"
+>
+    <div class="clientes-cabecera">
+        <div>
+            <h1 id="tituloClientes">
+                Clientes
+            </h1>
+
+            <p>
+                Administra la información
+                comercial y el historial de compras.
+            </p>
+        </div>
+
+        <button
+            id="btnNuevoCliente"
+            type="button"
+            class="btn-principal"
+        >
+            + Nuevo cliente
+        </button>
+    </div>
+
+    <div
+        id="mensajeClientes"
+        class="mensaje-clientes"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="resumen-clientes">
+        <article>
+            <span>Total clientes</span>
+
+            <strong id="totalClientes">
+                0
+            </strong>
+        </article>
+
+        <article>
+            <span>Activos</span>
+
+            <strong id="clientesActivos">
+                0
+            </strong>
+        </article>
+
+        <article>
+            <span>Inactivos</span>
+
+            <strong id="clientesInactivos">
+                0
+            </strong>
+        </article>
+
+        <article>
+            <span>Total comprado</span>
+
+            <strong id="totalCompradoClientes">
+                $0
+            </strong>
+        </article>
+    </div>
+
+    <div class="filtros-clientes">
+        <input
+            id="buscarCliente"
+            type="search"
+            placeholder="Buscar por documento, nombre, teléfono, correo o ciudad..."
+            autocomplete="off"
+        >
+
+        <select id="filtroEstadoCliente">
+            <option value="todos">
+                Todos
+            </option>
+
+            <option value="activos">
+                Activos
+            </option>
+
+            <option value="inactivos">
+                Inactivos
+            </option>
+        </select>
+    </div>
+
+    <div class="tabla-clientes-contenedor">
+        <table class="tabla-clientes">
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Cliente</th>
+                    <th>Contacto</th>
+                    <th>Ciudad</th>
+                    <th>Ventas</th>
+                    <th>Total comprado</th>
+                    <th>Última compra</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaClientes">
+                <tr>
+                    <td
+                        colspan="9"
+                        class="fila-vacia"
+                    >
+                        Cargando clientes...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div
+    id="modalCliente"
+    class="modal-clientes-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-clientes"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalCliente"
+    >
+        <form
+            id="formCliente"
+            novalidate
+        >
+            <div class="modal-clientes-cabecera">
+                <h2 id="tituloModalCliente">
+                    Nuevo cliente
+                </h2>
+
+                <button
+                    id="btnCerrarCliente"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="clienteId"
+                type="hidden"
+            >
+
+            <div class="fila-dos">
+                <div class="campo-cliente">
+                    <label for="tipoDocumentoCliente">
+                        Tipo de documento
+                    </label>
+
+                    <select id="tipoDocumentoCliente">
+                        <option value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="NIT">NIT</option>
+                        <option value="TI">TI</option>
+                        <option value="PASAPORTE">
+                            Pasaporte
+                        </option>
+                        <option value="OTRO">
+                            Otro
+                        </option>
+                    </select>
+                </div>
+
+                <div class="campo-cliente">
+                    <label for="documentoCliente">
+                        Documento
+                    </label>
+
+                    <input
+                        id="documentoCliente"
+                        type="text"
+                        maxlength="30"
+                    >
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-cliente">
+                    <label for="nombresCliente">
+                        Nombres o razón social *
+                    </label>
+
+                    <input
+                        id="nombresCliente"
+                        type="text"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+
+                <div class="campo-cliente">
+                    <label for="apellidosCliente">
+                        Apellidos
+                    </label>
+
+                    <input
+                        id="apellidosCliente"
+                        type="text"
+                        maxlength="120"
+                    >
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-cliente">
+                    <label for="telefonoCliente">
+                        Teléfono
+                    </label>
+
+                    <input
+                        id="telefonoCliente"
+                        type="text"
+                        maxlength="30"
+                    >
+                </div>
+
+                <div class="campo-cliente">
+                    <label for="correoCliente">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        id="correoCliente"
+                        type="email"
+                        maxlength="150"
+                    >
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-cliente">
+                    <label for="ciudadCliente">
+                        Ciudad
+                    </label>
+
+                    <input
+                        id="ciudadCliente"
+                        type="text"
+                        maxlength="100"
+                    >
+                </div>
+
+                <div class="campo-cliente">
+                    <label for="direccionCliente">
+                        Dirección
+                    </label>
+
+                    <input
+                        id="direccionCliente"
+                        type="text"
+                        maxlength="200"
+                    >
+                </div>
+            </div>
+
+            <label
+                id="campoEstadoCliente"
+                class="check-cliente"
+            >
+                <input
+                    id="estadoCliente"
+                    type="checkbox"
+                    checked
+                >
+
+                Cliente activo
+            </label>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarCliente"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnGuardarCliente"
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Guardar cliente
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div
+    id="modalHistorialCliente"
+    class="modal-clientes-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-clientes modal-historial-cliente"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloHistorialCliente"
+    >
+        <div class="modal-clientes-cabecera">
+            <h2 id="tituloHistorialCliente">
+                Historial del cliente
+            </h2>
+
+            <button
+                id="btnCerrarHistorialCliente"
+                type="button"
+                class="btn-cerrar"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div id="resumenHistorialCliente"></div>
+
+        <div class="tabla-historial-cliente">
+            <table class="tabla-clientes">
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Fecha</th>
+                        <th>Vendedor</th>
+                        <th>Método</th>
+                        <th>Productos</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaHistorialCliente">
+                    <tr>
+                        <td
+                            colspan="7"
+                            class="fila-vacia"
+                        >
+                            Cargando historial...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+<section
+    class="roles"
+    aria-labelledby="tituloRoles"
+>
+    <div class="roles-cabecera">
+        <div>
+            <h1 id="tituloRoles">
+                Roles y permisos
+            </h1>
+
+            <p>
+                Administra perfiles de acceso
+                y permisos por módulo.
+            </p>
+        </div>
+
+        <button
+            id="btnNuevoRol"
+            type="button"
+            class="btn-principal"
+        >
+            + Nuevo rol
+        </button>
+    </div>
+
+    <div
+        id="mensajeRoles"
+        class="mensaje-roles"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="resumen-roles">
+        <article>
+            <span>Total roles</span>
+            <strong id="totalRoles">0</strong>
+        </article>
+
+        <article>
+            <span>Roles activos</span>
+            <strong id="rolesActivos">0</strong>
+        </article>
+
+        <article>
+            <span>Roles inactivos</span>
+            <strong id="rolesInactivos">0</strong>
+        </article>
+
+        <article>
+            <span>Permisos activos</span>
+            <strong id="permisosActivos">0</strong>
+        </article>
+    </div>
+
+    <div class="roles-grid">
+        <div class="panel-roles">
+            <div class="filtros-roles">
+                <input
+                    id="buscarRol"
+                    type="search"
+                    placeholder="Buscar rol..."
+                    autocomplete="off"
+                >
+
+                <select id="filtroEstadoRol">
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="activos">
+                        Activos
+                    </option>
+
+                    <option value="inactivos">
+                        Inactivos
+                    </option>
+                </select>
+            </div>
+
+            <div
+                id="listaRoles"
+                class="lista-roles"
+            >
+                Cargando roles...
+            </div>
+        </div>
+
+        <div class="panel-permisos">
+            <div class="panel-permisos-cabecera">
+                <div>
+                    <h2 id="tituloPermisosRol">
+                        Selecciona un rol
+                    </h2>
+
+                    <p id="descripcionPermisosRol">
+                        Elige un rol para configurar sus permisos.
+                    </p>
+                </div>
+
+                <button
+                    id="btnGuardarPermisos"
+                    type="button"
+                    class="btn-principal"
+                    disabled
+                >
+                    Guardar permisos
+                </button>
+            </div>
+
+            <div class="acciones-permisos">
+                <button
+                    id="btnSeleccionarTodos"
+                    type="button"
+                    class="btn-secundario"
+                    disabled
+                >
+                    Seleccionar todos
+                </button>
+
+                <button
+                    id="btnLimpiarPermisos"
+                    type="button"
+                    class="btn-secundario"
+                    disabled
+                >
+                    Limpiar selección
+                </button>
+            </div>
+
+            <div
+                id="matrizPermisos"
+                class="matriz-permisos"
+            >
+                Selecciona un rol para ver sus permisos.
+            </div>
+        </div>
+    </div>
+</section>
+
+<div
+    id="modalRol"
+    class="modal-roles-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-roles"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalRol"
+    >
+        <form
+            id="formRol"
+            novalidate
+        >
+            <div class="modal-roles-cabecera">
+                <h2 id="tituloModalRol">
+                    Nuevo rol
+                </h2>
+
+                <button
+                    id="btnCerrarRol"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="rolId"
+                type="hidden"
+            >
+
+            <div class="campo-rol">
+                <label for="nombreRol">
+                    Nombre *
+                </label>
+
+                <input
+                    id="nombreRol"
+                    type="text"
+                    maxlength="80"
+                    required
+                >
+            </div>
+
+            <div class="campo-rol">
+                <label for="descripcionRol">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="descripcionRol"
+                    rows="4"
+                    maxlength="250"
+                ></textarea>
+            </div>
+
+            <label
+                id="campoEstadoRol"
+                class="check-rol"
+            >
+                <input
+                    id="estadoRol"
+                    type="checkbox"
+                    checked
+                >
+
+                Rol activo
+            </label>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarRol"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnGuardarRol"
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Guardar rol
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

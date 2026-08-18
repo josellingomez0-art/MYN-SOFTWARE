@@ -1,0 +1,391 @@
+<section
+    class="proveedores"
+    aria-labelledby="tituloProveedores"
+>
+    <div class="proveedores-cabecera">
+        <div>
+            <h1 id="tituloProveedores">
+                Proveedores
+            </h1>
+
+            <p>
+                Administra tus proveedores,
+                productos relacionados y compras.
+            </p>
+        </div>
+
+        <button
+            id="btnNuevoProveedor"
+            type="button"
+            class="btn-principal"
+        >
+            + Nuevo proveedor
+        </button>
+    </div>
+
+    <div
+        id="mensajeProveedores"
+        class="mensaje-proveedores"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="resumen-proveedores">
+        <article>
+            <span>Total proveedores</span>
+
+            <strong id="totalProveedores">
+                0
+            </strong>
+        </article>
+
+        <article>
+            <span>Activos</span>
+
+            <strong id="proveedoresActivos">
+                0
+            </strong>
+        </article>
+
+        <article>
+            <span>Inactivos</span>
+
+            <strong id="proveedoresInactivos">
+                0
+            </strong>
+        </article>
+
+        <article>
+            <span>Total en compras</span>
+
+            <strong id="totalComprasProveedores">
+                $0
+            </strong>
+        </article>
+    </div>
+
+    <div class="filtros-proveedores">
+        <input
+            id="buscarProveedor"
+            type="search"
+            placeholder="Buscar por NIT, razón social, contacto, teléfono, correo o ciudad..."
+            autocomplete="off"
+        >
+
+        <select id="filtroEstadoProveedor">
+            <option value="todos">
+                Todos
+            </option>
+
+            <option value="activos">
+                Activos
+            </option>
+
+            <option value="inactivos">
+                Inactivos
+            </option>
+        </select>
+    </div>
+
+    <div class="tabla-proveedores-contenedor">
+        <table class="tabla-proveedores">
+            <thead>
+                <tr>
+                    <th>NIT</th>
+                    <th>Proveedor</th>
+                    <th>Contacto</th>
+                    <th>Ciudad</th>
+                    <th>Productos</th>
+                    <th>Compras</th>
+                    <th>Total comprado</th>
+                    <th>Última compra</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaProveedores">
+                <tr>
+                    <td
+                        colspan="10"
+                        class="fila-vacia"
+                    >
+                        Cargando proveedores...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div
+    id="modalProveedor"
+    class="modal-proveedores-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-proveedores"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalProveedor"
+    >
+        <form
+            id="formProveedor"
+            novalidate
+        >
+            <div class="modal-proveedores-cabecera">
+                <h2 id="tituloModalProveedor">
+                    Nuevo proveedor
+                </h2>
+
+                <button
+                    id="btnCerrarProveedor"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="proveedorId"
+                type="hidden"
+            >
+
+            <div class="fila-dos">
+                <div class="campo-proveedor">
+                    <label for="nitProveedor">
+                        NIT
+                    </label>
+
+                    <input
+                        id="nitProveedor"
+                        type="text"
+                        maxlength="30"
+                    >
+                </div>
+
+                <div class="campo-proveedor">
+                    <label for="razonSocialProveedor">
+                        Razón social *
+                    </label>
+
+                    <input
+                        id="razonSocialProveedor"
+                        type="text"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-proveedor">
+                    <label for="contactoProveedor">
+                        Persona de contacto
+                    </label>
+
+                    <input
+                        id="contactoProveedor"
+                        type="text"
+                        maxlength="120"
+                    >
+                </div>
+
+                <div class="campo-proveedor">
+                    <label for="telefonoProveedor">
+                        Teléfono
+                    </label>
+
+                    <input
+                        id="telefonoProveedor"
+                        type="text"
+                        maxlength="30"
+                    >
+                </div>
+            </div>
+
+            <div class="fila-dos">
+                <div class="campo-proveedor">
+                    <label for="correoProveedor">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        id="correoProveedor"
+                        type="email"
+                        maxlength="150"
+                    >
+                </div>
+
+                <div class="campo-proveedor">
+                    <label for="ciudadProveedor">
+                        Ciudad
+                    </label>
+
+                    <input
+                        id="ciudadProveedor"
+                        type="text"
+                        maxlength="100"
+                    >
+                </div>
+            </div>
+
+            <div class="campo-proveedor">
+                <label for="direccionProveedor">
+                    Dirección
+                </label>
+
+                <input
+                    id="direccionProveedor"
+                    type="text"
+                    maxlength="200"
+                >
+            </div>
+
+            <label
+                id="campoEstadoProveedor"
+                class="check-proveedor"
+            >
+                <input
+                    id="estadoProveedor"
+                    type="checkbox"
+                    checked
+                >
+
+                Proveedor activo
+            </label>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarProveedor"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnGuardarProveedor"
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Guardar proveedor
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div
+    id="modalHistorialProveedor"
+    class="modal-proveedores-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-proveedores modal-historial-proveedor"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloHistorialProveedor"
+    >
+        <div class="modal-proveedores-cabecera">
+            <h2 id="tituloHistorialProveedor">
+                Historial del proveedor
+            </h2>
+
+            <button
+                id="btnCerrarHistorialProveedor"
+                type="button"
+                class="btn-cerrar"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div id="resumenHistorialProveedor"></div>
+
+        <div class="tabs-historial-proveedor">
+            <button
+                id="tabComprasProveedor"
+                type="button"
+                class="activo"
+            >
+                Compras
+            </button>
+
+            <button
+                id="tabProductosProveedor"
+                type="button"
+            >
+                Productos
+            </button>
+        </div>
+
+        <div
+            id="vistaComprasProveedor"
+            class="vista-historial activa"
+        >
+            <div class="tabla-historial-proveedor">
+                <table class="tabla-proveedores">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Fecha</th>
+                            <th>Factura</th>
+                            <th>Usuario</th>
+                            <th>Pago</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaComprasProveedor">
+                        <tr>
+                            <td
+                                colspan="8"
+                                class="fila-vacia"
+                            >
+                                Cargando compras...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div
+            id="vistaProductosProveedor"
+            class="vista-historial"
+        >
+            <div class="tabla-historial-proveedor">
+                <table class="tabla-proveedores">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th>Marca</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaProductosProveedor">
+                        <tr>
+                            <td
+                                colspan="7"
+                                class="fila-vacia"
+                            >
+                                Cargando productos...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

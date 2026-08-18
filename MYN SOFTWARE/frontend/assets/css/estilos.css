@@ -1,0 +1,557 @@
+/* 1. Estilos generales (Reset) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+/* 2. Barra superior (la línea verde gruesa) */
+.top-bar {
+    background-color: #009900; /* Verde institucional MYN */
+    padding: 10px;
+    border-bottom: 5px solid #006600;
+}
+
+.url-bar {
+    background-color: white;
+    width: 300px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    border-radius: 15px;
+    text-align: center;
+    color: #666;
+}
+
+/* 3. Contenedor principal (Usamos Flexbox para poner las cosas una al lado de la otra) */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 40px; /* Espacio entre el logo, el formulario y el texto */
+    padding: 20px;
+}
+
+/* 4. Estilos del Formulario */
+.form-section form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form-section label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-section input {
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+}
+
+/* 5. Botones */
+.btn-ingresar {
+    background-color: #006600;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.btn-olvido {
+    background-color: #66cc00;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* 6. Sección de Bienvenida */
+.welcome-section {
+    max-width: 300px;
+}
+
+.welcome-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.welcome-section p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+/* 7. Ajuste del tamaño del Logo */
+.logo {
+    max-width: 250px; /* Ajusta este número: reduce a 200px si sigue muy grande, o sube a 300px si quedó pequeño */
+    height: auto;     /* Esto mantiene la proporción de la imagen para que no se vea estirada o aplastada */
+}
+/* =========================================
+   ESTILOS PARA EL MÓDULO DE VENTAS
+   ========================================= */
+
+/* --- 1. Barra de Navegación --- */
+.navbar {
+    background-color: #009900;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-logo-container {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: auto; /* Empuja los enlaces hacia la derecha */
+}
+
+.nav-logo {
+    max-width: 60px; /* Un logo más pequeño para la barra */
+    height: auto;
+    display: block;
+}
+
+.nav-links {
+    list-style: none; /* Quita los puntos de la lista */
+    display: flex;
+    gap: 20px; /* Espacio entre los enlaces */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.nav-links a.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* --- 2. Contenedor Principal y Buscador --- */
+.main-ventas {
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido en pantallas gigantes */
+}
+
+.header-ventas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 60%;
+    padding: 10px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-agregar {
+    background-color: #009900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- 3. Layout de Dos Columnas (Grid) --- */
+.layout-ventas {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* La tabla toma 2 partes, el resumen 1 parte */
+    gap: 30px; /* Espacio entre la tabla y el resumen */
+}
+
+/* --- 4. Tabla de Productos --- */
+.tabla-ventas {
+    width: 100%;
+    border-collapse: collapse; /* Une los bordes de las celdas */
+    text-align: center;
+}
+
+.tabla-ventas th, .tabla-ventas td {
+    border: 1px solid #999;
+    padding: 12px;
+}
+
+.tabla-ventas th {
+    background-color: #d9d9d9;
+}
+
+.acciones-inferiores {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-secundario {
+    background-color: #009900;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- 5. Caja de Resumen Lateral --- */
+.resumen-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.totales p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.totales hr {
+    margin: 15px 0;
+    border: 1px solid #333;
+}
+
+.totales h4 {
+    text-align: right;
+    font-size: 1.3rem;
+}
+
+.metodos-pago {
+    margin: 20px 0;
+    line-height: 1.8; /* Da espacio entre los botones de radio */
+}
+
+.botones-resumen {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-cancelar, .btn-descuento {
+    padding: 8px 15px;
+    border: 1px solid #333;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-confirmar {
+    width: 100%;
+    background-color: #2b5cff; /* Azul del diseño original */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* =========================================
+   ESTILOS PARA GESTIÓN DE PRODUCTOS
+   ========================================= */
+
+/* --- 1. Nueva Barra de Navegación --- */
+.navbar-productos {
+    background-color: #66cc00; /* Un verde un poco más claro como en el diseño */
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center; /* Centra los enlaces */
+}
+
+.nav-links-productos {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links-productos a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* --- 2. Layout de 3 Columnas --- */
+.layout-tres-columnas {
+    display: grid;
+    /* Esto crea 3 columnas: Izquierda (200px), Centro (todo el espacio restante), Derecha (150px) */
+    grid-template-columns: 200px 1fr 150px; 
+    gap: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 3. Columna Izquierda (Logo) --- */
+.columna-izq {
+    text-align: center;
+}
+
+.logo-grande {
+    max-width: 150px;
+    height: auto;
+}
+
+.eslogan {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.resaltado-x {
+    color: #66cc00; /* La X verde */
+    font-size: 1.2rem;
+}
+
+/* --- 4. Columna Central (Tabla y Buscador) --- */
+.titulo-seccion {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.input-buscar-prod {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.subtitulo-seccion {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+/* Reutilizamos y adaptamos la tabla */
+.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tabla-productos th, .tabla-productos td {
+    border: 1px solid #999;
+    padding: 8px;
+}
+
+/* --- 5. Paginación --- */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-pag-verde {
+    background-color: #66cc00;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Sombrita para el efecto 3D del diseño */
+}
+
+.num-pag {
+    background-color: black;
+    color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px; /* Bordes ligeramente redondeados como en la imagen */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- 6. Columna Derecha (Avatar) --- */
+.columna-der {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-usuario {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #f29f05; /* Borde naranja del diseño */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.btn-sesion-usuario {
+    background-color: #66cc00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+/* =========================================
+   ESTILOS PARA EL MÓDULO DE EMPLEADOS
+   ========================================= */
+
+/* --- 1. Layout Principal (Sidebar a la izq, Contenido a la der) --- */
+.layout-empleados {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Columna izq de 250px, la derecha toma el resto */
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 2. Barra Lateral (Sidebar) --- */
+.sidebar-empleados {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el logo y el texto horizontalmente */
+}
+
+.sidebar-logo img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.titulo-navegacion {
+    color: #0066cc; /* Color azul del diseño */
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0066cc; /* La línea debajo del texto */
+    padding-bottom: 5px;
+    width: 80%;
+    text-align: center;
+}
+
+.menu-lateral {
+    list-style: none;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.menu-lateral li {
+    margin-bottom: 15px;
+}
+
+.menu-lateral button {
+    width: 100%;
+    background-color: #009900;
+    color: white;
+    border: 2px solid #004d00; /* Borde más oscuro */
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* Pone el texto a la izq y la flechita a la der */
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* --- 3. Contenido Principal --- */
+.header-empleados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.titulo-con-icono h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.usuario-admin {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* --- 4. Barra de Acciones (Buscador y Botón) --- */
+.barra-acciones-empleados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-buscar-emp {
+    width: 60%;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 20px; /* Bordes bien redondeados como en el mockup */
+    font-size: 1rem;
+}
+
+.btn-anadir-emp {
+    background-color: #009900;
+    color: white;
+    border: 2px solid #004d00;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* --- 5. Tabla de Empleados --- */
+.tabla-empleados {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #333; /* Borde exterior de la tabla */
+}
+
+.tabla-empleados th {
+    background-color: #cccccc; /* Gris del encabezado */
+    padding: 12px;
+    border: 1px solid #666;
+}
+
+.tabla-empleados td {
+    padding: 12px;
+    border-left: 1px solid #666;
+    border-right: 1px solid #666;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Efecto cebra para las filas (opcional pero mejora la lectura) */
+.tabla-empleados tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

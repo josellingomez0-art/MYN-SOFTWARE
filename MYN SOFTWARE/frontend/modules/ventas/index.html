@@ -1,0 +1,410 @@
+<section
+    class="ventas-pos"
+    aria-labelledby="tituloVentas"
+>
+    <div class="ventas-cabecera">
+        <div>
+            <h1 id="tituloVentas">
+                Ventas
+            </h1>
+
+            <p>
+                Punto de venta, facturación
+                e historial comercial.
+            </p>
+        </div>
+
+        <div
+            id="estadoCajaVenta"
+            class="estado-caja-venta verificando"
+        >
+            Verificando caja...
+        </div>
+    </div>
+
+    <div
+        id="mensajeVentas"
+        class="mensaje-ventas"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <div class="tabs-ventas">
+        <button
+            id="tabNuevaVenta"
+            type="button"
+            class="activo"
+            data-vista="nueva"
+        >
+            Nueva venta
+        </button>
+
+        <button
+            id="tabHistorialVentas"
+            type="button"
+            data-vista="historial"
+        >
+            Historial
+        </button>
+    </div>
+
+    <div
+        id="vistaNuevaVenta"
+        class="vista-ventas activa"
+    >
+        <div
+            id="avisoCajaVenta"
+            class="aviso-caja"
+            hidden
+        >
+            No tienes una caja abierta.
+
+            <button
+                id="btnIrCaja"
+                type="button"
+            >
+                Abrir caja
+            </button>
+        </div>
+
+        <div class="pos-grid">
+            <div class="catalogo-ventas">
+                <h2>Productos</h2>
+
+                <input
+                    id="buscarProductoVenta"
+                    type="search"
+                    placeholder="Buscar por código, nombre o marca..."
+                    autocomplete="off"
+                >
+
+                <div
+                    id="listaProductosVenta"
+                    class="lista-productos-venta"
+                >
+                    Cargando productos...
+                </div>
+            </div>
+
+            <div class="carrito-venta">
+                <h2>Factura</h2>
+
+                <div class="fila-dos">
+                    <div class="campo-venta">
+                        <label for="clienteVenta">
+                            Cliente
+                        </label>
+
+                        <select id="clienteVenta">
+                            <option value="">
+                                Cliente general
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="campo-venta">
+                        <label for="metodoPagoVenta">
+                            Método de pago *
+                        </label>
+
+                        <select
+                            id="metodoPagoVenta"
+                            required
+                        ></select>
+                    </div>
+                </div>
+
+                <div class="tabla-carrito-venta">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Desc.</th>
+                                <th>IVA %</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaCarritoVenta">
+                            <tr>
+                                <td
+                                    colspan="7"
+                                    class="fila-vacia"
+                                >
+                                    Carrito vacío.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="campo-venta">
+                    <label for="observacionesVenta">
+                        Observaciones
+                    </label>
+
+                    <textarea
+                        id="observacionesVenta"
+                        rows="2"
+                        maxlength="500"
+                        placeholder="Información adicional"
+                    ></textarea>
+                </div>
+
+                <div
+                    id="campoEfectivoVenta"
+                    class="campo-venta"
+                    hidden
+                >
+                    <label for="efectivoRecibidoVenta">
+                        Efectivo recibido
+                    </label>
+
+                    <input
+                        id="efectivoRecibidoVenta"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+                    <div class="cambio-venta">
+                        Cambio:
+
+                        <strong id="cambioVenta">
+                            $0
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="totales-venta">
+                    <div>
+                        <span>Subtotal</span>
+
+                        <strong id="subtotalVenta">
+                            $0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Descuento</span>
+
+                        <strong id="descuentoVenta">
+                            $0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>IVA</span>
+
+                        <strong id="ivaVenta">
+                            $0
+                        </strong>
+                    </div>
+
+                    <div class="total-final-venta">
+                        <span>Total</span>
+
+                        <strong id="totalVenta">
+                            $0
+                        </strong>
+                    </div>
+                </div>
+
+                <button
+                    id="btnRegistrarVenta"
+                    type="button"
+                    class="btn-principal"
+                    disabled
+                >
+                    Registrar venta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div
+        id="vistaHistorialVentas"
+        class="vista-ventas"
+    >
+        <div class="filtros-ventas">
+            <input
+                id="buscarVenta"
+                type="search"
+                placeholder="Número, cliente o documento..."
+            >
+
+            <select id="filtroClienteVenta">
+                <option value="">
+                    Todos los clientes
+                </option>
+            </select>
+
+            <select id="filtroEstadoVenta">
+                <option value="todos">
+                    Todos los estados
+                </option>
+
+                <option value="COMPLETADA">
+                    Completadas
+                </option>
+
+                <option value="ANULADA">
+                    Anuladas
+                </option>
+            </select>
+
+            <input
+                id="fechaDesdeVenta"
+                type="date"
+                aria-label="Fecha inicial"
+            >
+
+            <input
+                id="fechaHastaVenta"
+                type="date"
+                aria-label="Fecha final"
+            >
+
+            <button
+                id="btnFiltrarVentas"
+                type="button"
+                class="btn-secundario"
+            >
+                Filtrar
+            </button>
+        </div>
+
+        <div class="tabla-historial-ventas">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Vendedor</th>
+                        <th>Caja</th>
+                        <th>Método</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaHistorialVentas">
+                    <tr>
+                        <td
+                            colspan="9"
+                            class="fila-vacia"
+                        >
+                            Cargando ventas...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div
+    id="modalDetalleVenta"
+    class="modal-ventas-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-ventas modal-detalle-venta"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloDetalleVenta"
+    >
+        <div class="modal-ventas-cabecera">
+            <h2 id="tituloDetalleVenta">
+                Detalle de venta
+            </h2>
+
+            <button
+                id="btnCerrarDetalleVenta"
+                type="button"
+                class="btn-cerrar"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div id="contenidoDetalleVenta">
+            Cargando...
+        </div>
+    </div>
+</div>
+
+<div
+    id="modalAnularVenta"
+    class="modal-ventas-overlay"
+    aria-hidden="true"
+>
+    <div
+        class="modal-ventas"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloAnularVenta"
+    >
+        <form id="formAnularVenta">
+            <div class="modal-ventas-cabecera">
+                <h2 id="tituloAnularVenta">
+                    Anular venta
+                </h2>
+
+                <button
+                    id="btnCerrarAnulacionVenta"
+                    type="button"
+                    class="btn-cerrar"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <input
+                id="idVentaAnular"
+                type="hidden"
+            >
+
+            <p id="textoVentaAnular"></p>
+
+            <div class="campo-venta">
+                <label for="motivoAnulacionVenta">
+                    Motivo *
+                </label>
+
+                <textarea
+                    id="motivoAnulacionVenta"
+                    rows="4"
+                    maxlength="250"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="acciones-modal">
+                <button
+                    id="btnCancelarAnulacionVenta"
+                    type="button"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="btnConfirmarAnulacionVenta"
+                    type="submit"
+                    class="btn-peligro"
+                >
+                    Anular venta
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

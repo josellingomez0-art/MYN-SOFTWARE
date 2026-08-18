@@ -1,0 +1,109 @@
+
+<div class="contenido">
+
+    <section class="cards">
+
+        <div class="card">
+            <h3>Ventas Hoy</h3>
+            <p id="kpiVentasHoy">$0</p>
+        </div>
+
+        <div class="card">
+            <h3>Productos</h3>
+            <p id="kpiProductos">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Clientes</h3>
+            <p id="kpiClientes">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Stock Bajo</h3>
+            <p id="kpiStockBajo">0</p>
+        </div>
+
+    </section>
+
+    <section class="dashboard-grid">
+
+        <div class="panel">
+
+            <h2>Últimas ventas</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaUltimasVentas">
+                    <tr><td colspan="3">Cargando...</td></tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>Productos con stock bajo</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaStockBajo">
+                    <tr><td colspan="2">Cargando...</td></tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <section class="acciones">
+
+    <button
+        type="button"
+        data-abrir-modulo="ventas"
+    >
+        Nueva Venta
+    </button>
+
+    <button
+        type="button"
+        data-abrir-modulo="productos"
+    >
+        Productos
+    </button>
+
+    <button
+        type="button"
+        data-abrir-modulo="inventario"
+    >
+        Inventario
+    </button>
+
+    <button
+        type="button"
+        data-abrir-modulo="reportes"
+    >
+        Reportes
+    </button>
+
+</section>
+
+</div>
+
+
