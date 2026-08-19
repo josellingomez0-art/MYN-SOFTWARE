@@ -37,6 +37,7 @@ console.log("📁 frontendPath:", frontendPath);
 console.log("📄 index.html:", path.join(frontendPath, "index.html"));
 console.log("📂 existe frontend:", require("fs").existsSync(frontendPath));
 console.log("📄 existe index.html:", require("fs").existsSync(path.join(frontendPath, "index.html")));
+console.log("📦 CONTENIDO RAÍZ:", require("fs").readdirSync("/"));
 
 // Servir archivos estáticos del frontend
 app.use(express.static(frontendPath));
