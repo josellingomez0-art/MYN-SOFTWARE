@@ -3,7 +3,10 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
-// Ruta del frontend
+// =====================================================
+// FRONTEND
+// =====================================================
+
 const posiblesRutasFrontend = [
     path.resolve(__dirname, "../frontend"),
     "/app/frontend",
@@ -11,18 +14,27 @@ const posiblesRutasFrontend = [
     "/frontend"
 ];
 
-const frontendPath = posiblesRutasFrontend.find(ruta =>
+const frontendPath = posiblesRutasFrontend.find((ruta) =>
     fs.existsSync(path.join(ruta, "index.html"))
 );
 
 if (!frontendPath) {
     console.error("❌ No se encontró frontend/index.html");
-    console.error("Rutas revisadas:", posiblesRutasFrontend);
+    console.error("📁 __dirname:", __dirname);
+    console.error("📁 Rutas revisadas:", posiblesRutasFrontend);
+
     process.exit(1);
 }
 
 console.log("✅ Frontend encontrado en:", frontendPath);
-console.log("📄 index.html:", path.join(frontendPath, "index.html"));
+console.log(
+    "📄 index.html:",
+    path.join(frontendPath, "index.html")
+);
+
+// =====================================================
+// RUTAS
+// =====================================================
 
 const usuariosRoutes = require("./src/routes/usuarios.routes");
 const clientesRoutes = require("./src/routes/clientes.routes");
@@ -44,6 +56,10 @@ const reportesRoutes = require("./src/routes/reportes.routes");
 
 const { verificarToken } = require("./src/middleware/auth.middleware");
 
+// =====================================================
+// EXPRESS
+// =====================================================
+
 const app = express();
 
 // Middlewares generales
@@ -51,14 +67,22 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// =====================================================
+// FRONTEND ESTÁTICO
+// =====================================================
 
-// Servir archivos estáticos del frontend
 app.use(express.static(frontendPath));
 
-// Ruta pública de autenticación
+// =====================================================
+// AUTENTICACIÓN
+// =====================================================
+
 app.use("/api/auth", authRoutes);
 
-// Rutas protegidas
+// =====================================================
+// RUTAS PROTEGIDAS
+// =====================================================
+
 app.use("/api/usuarios", verificarToken, usuariosRoutes);
 app.use("/api/clientes", verificarToken, clientesRoutes);
 app.use("/api/productos", verificarToken, productosRoutes);
@@ -74,24 +98,36 @@ app.use("/api/configuracion", verificarToken, configuracionRoutes);
 app.use("/api/caja", verificarToken, cajaRoutes);
 app.use("/api/metodos-pago", verificarToken, metodosPagoRoutes);
 app.use("/api/permisos", verificarToken, permisosRoutes);
-app.use( "/api/reportes",verificarToken,reportesRoutes);
+app.use("/api/reportes", verificarToken, reportesRoutes);
 
-// Página principal del sistema
+// =====================================================
+// FRONTEND - PÁGINA PRINCIPAL
+// =====================================================
+
 app.get("/", (req, res) => {
-    return res.sendFile(path.join(frontendPath, "index.html"));
+    return res.sendFile(
+        path.join(frontendPath, "index.html")
+    );
 });
 
-// Ruta de respaldo para el frontend.
-// Compatible con Express 5: se usa una expresión regular en lugar de "*".
+// =====================================================
+// FRONTEND - SPA FALLBACK
+// =====================================================
+
 app.get(/.*/, (req, res, next) => {
     if (req.path.startsWith("/api/")) {
         return next();
     }
 
-    return res.sendFile(path.join(frontendPath, "index.html"));
+    return res.sendFile(
+        path.join(frontendPath, "index.html")
+    );
 });
 
-// Manejo de rutas API inexistentes
+// =====================================================
+// API 404
+// =====================================================
+
 app.use("/api", (req, res) => {
     return res.status(404).json({
         ok: false,
@@ -99,9 +135,12 @@ app.use("/api", (req, res) => {
     });
 });
 
-// Manejo global de errores
+// =====================================================
+// MANEJO GLOBAL DE ERRORES
+// =====================================================
+
 app.use((error, req, res, next) => {
-    console.error("Error no controlado:", error);
+    console.error("❌ Error no controlado:", error);
 
     if (res.headersSent) {
         return next(error);
