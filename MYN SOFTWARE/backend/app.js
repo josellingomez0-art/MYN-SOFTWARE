@@ -3,15 +3,26 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
-// ...
+// Ruta del frontend
+const posiblesRutasFrontend = [
+    path.resolve(__dirname, "../frontend"),
+    "/app/frontend",
+    path.resolve(__dirname, "../../frontend"),
+    "/frontend"
+];
 
-const frontendPath = "/app/frontend";
-
-console.log("📁 FRONTEND PATH:", frontendPath);
-console.log(
-    "📄 INDEX EXISTE:",
-    fs.existsSync(path.join(frontendPath, "index.html"))
+const frontendPath = posiblesRutasFrontend.find(ruta =>
+    fs.existsSync(path.join(ruta, "index.html"))
 );
+
+if (!frontendPath) {
+    console.error("❌ No se encontró frontend/index.html");
+    console.error("Rutas revisadas:", posiblesRutasFrontend);
+    process.exit(1);
+}
+
+console.log("✅ Frontend encontrado en:", frontendPath);
+console.log("📄 index.html:", path.join(frontendPath, "index.html"));
 
 const usuariosRoutes = require("./src/routes/usuarios.routes");
 const clientesRoutes = require("./src/routes/clientes.routes");
@@ -40,30 +51,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ruta absoluta de la carpeta frontend
-const posiblesRutasFrontend = [
-    path.resolve(__dirname, "../frontend"),
-    path.resolve(process.cwd(), "frontend"),
-    path.resolve("/app/frontend")
-];
-
-const frontendPath = posiblesRutasFrontend.find(ruta =>
-    fs.existsSync(path.join(ruta, "index.html"))
-);
-
-if (!frontendPath) {
-    console.error("❌ No se encontró frontend/index.html");
-    console.error("Rutas revisadas:", posiblesRutasFrontend);
-} else {
-    console.log("✅ Frontend encontrado en:", frontendPath);
-}
-
-console.log("📁 __dirname:", __dirname);
-console.log("📁 frontendPath:", frontendPath);
-console.log("📄 index.html:", path.join(frontendPath, "index.html"));
-console.log("📂 existe frontend:", require("fs").existsSync(frontendPath));
-console.log("📄 existe index.html:", require("fs").existsSync(path.join(frontendPath, "index.html")));
-console.log("📦 CONTENIDO RAÍZ:", require("fs").readdirSync("/"));
 
 // Servir archivos estáticos del frontend
 app.use(express.static(frontendPath));
