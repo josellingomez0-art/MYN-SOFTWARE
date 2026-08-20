@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const fs = require("fs");
 
 const usuariosRoutes = require("./src/routes/usuarios.routes");
 const clientesRoutes = require("./src/routes/clientes.routes");
