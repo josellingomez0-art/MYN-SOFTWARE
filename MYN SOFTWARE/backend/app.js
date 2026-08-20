@@ -31,7 +31,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Ruta absoluta de la carpeta frontend
-const frontendPath = path.resolve(__dirname, "..", "frontend");
+const posiblesRutasFrontend = [
+    path.resolve(__dirname, "../frontend"),
+    path.resolve(process.cwd(), "frontend"),
+    path.resolve("/app/frontend")
+];
+
+const frontendPath = posiblesRutasFrontend.find(ruta =>
+    fs.existsSync(path.join(ruta, "index.html"))
+);
+
+if (!frontendPath) {
+    console.error("❌ No se encontró frontend/index.html");
+    console.error("Rutas revisadas:", posiblesRutasFrontend);
+} else {
+    console.log("✅ Frontend encontrado en:", frontendPath);
+}
 
 console.log("📁 __dirname:", __dirname);
 console.log("📁 frontendPath:", frontendPath);
