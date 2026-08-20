@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Ruta absoluta de la carpeta frontend
-const frontendPath = path.join(__dirname, "../frontend");
+const frontendPath = path.resolve(__dirname, "..", "frontend");
 
 console.log("📁 __dirname:", __dirname);
 console.log("📁 frontendPath:", frontendPath);
