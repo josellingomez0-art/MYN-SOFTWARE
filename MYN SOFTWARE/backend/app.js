@@ -14,15 +14,19 @@ const posiblesRutasFrontend = [
     "/frontend"
 ];
 
+console.log("=======================================");
+console.log("🔎 BUSCANDO FRONTEND");
+console.log("=======================================");
+console.log("📁 __dirname:", __dirname);
+console.log("📁 Rutas revisadas:", posiblesRutasFrontend);
+
 const frontendPath = posiblesRutasFrontend.find((ruta) =>
     fs.existsSync(path.join(ruta, "index.html"))
 );
 
 if (!frontendPath) {
-    console.error("❌ No se encontró frontend/index.html");
-    console.error("📁 __dirname:", __dirname);
+    console.error("❌ NO SE ENCONTRÓ frontend/index.html");
     console.error("📁 Rutas revisadas:", posiblesRutasFrontend);
-
     process.exit(1);
 }
 
@@ -62,19 +66,37 @@ const { verificarToken } = require("./src/middleware/auth.middleware");
 
 const app = express();
 
-// Middlewares generales
+// =====================================================
+// MIDDLEWARES GENERALES
+// =====================================================
+
 app.use(cors());
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({
+    extended: true
+}));
 
 // =====================================================
-// FRONTEND ESTÁTICO
+// ARCHIVOS ESTÁTICOS DEL FRONTEND
 // =====================================================
 
 app.use(express.static(frontendPath));
 
 // =====================================================
-// AUTENTICACIÓN
+// HEALTH CHECK
+// =====================================================
+
+app.get("/health", (req, res) => {
+    return res.status(200).json({
+        ok: true,
+        mensaje: "MYN SOFTWARE funcionando"
+    });
+});
+
+// =====================================================
+// AUTENTICACIÓN PÚBLICA
 // =====================================================
 
 app.use("/api/auth", authRoutes);
@@ -84,24 +106,39 @@ app.use("/api/auth", authRoutes);
 // =====================================================
 
 app.use("/api/usuarios", verificarToken, usuariosRoutes);
+
 app.use("/api/clientes", verificarToken, clientesRoutes);
+
 app.use("/api/productos", verificarToken, productosRoutes);
+
 app.use("/api/categorias", verificarToken, categoriasRoutes);
+
 app.use("/api/proveedores", verificarToken, proveedoresRoutes);
+
 app.use("/api/compras", verificarToken, comprasRoutes);
+
 app.use("/api/ventas", verificarToken, ventasRoutes);
+
 app.use("/api/dashboard", verificarToken, dashboardRoutes);
+
 app.use("/api/inventario", verificarToken, inventarioRoutes);
+
 app.use("/api/roles", verificarToken, rolesRoutes);
+
 app.use("/api/empresa", verificarToken, empresaRoutes);
+
 app.use("/api/configuracion", verificarToken, configuracionRoutes);
+
 app.use("/api/caja", verificarToken, cajaRoutes);
+
 app.use("/api/metodos-pago", verificarToken, metodosPagoRoutes);
+
 app.use("/api/permisos", verificarToken, permisosRoutes);
+
 app.use("/api/reportes", verificarToken, reportesRoutes);
 
 // =====================================================
-// FRONTEND - PÁGINA PRINCIPAL
+// PÁGINA PRINCIPAL
 // =====================================================
 
 app.get("/", (req, res) => {
@@ -111,10 +148,11 @@ app.get("/", (req, res) => {
 });
 
 // =====================================================
-// FRONTEND - SPA FALLBACK
+// SPA FALLBACK
 // =====================================================
 
 app.get(/.*/, (req, res, next) => {
+
     if (req.path.startsWith("/api/")) {
         return next();
     }
@@ -125,14 +163,16 @@ app.get(/.*/, (req, res, next) => {
 });
 
 // =====================================================
-// API 404
+// API INEXISTENTE
 // =====================================================
 
 app.use("/api", (req, res) => {
+
     return res.status(404).json({
         ok: false,
         mensaje: "Ruta de API no encontrada"
     });
+
 });
 
 // =====================================================
@@ -140,7 +180,8 @@ app.use("/api", (req, res) => {
 // =====================================================
 
 app.use((error, req, res, next) => {
-    console.error("❌ Error no controlado:", error);
+
+    console.error("Error no controlado:", error);
 
     if (res.headersSent) {
         return next(error);
@@ -150,6 +191,11 @@ app.use((error, req, res, next) => {
         ok: false,
         mensaje: error.message || "Error interno del servidor"
     });
+
 });
+
+// =====================================================
+// EXPORTAR APP
+// =====================================================
 
 module.exports = app;
