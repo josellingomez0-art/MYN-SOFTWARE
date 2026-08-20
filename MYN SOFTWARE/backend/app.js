@@ -3,6 +3,16 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
+// ...
+
+const frontendPath = "/app/frontend";
+
+console.log("📁 FRONTEND PATH:", frontendPath);
+console.log(
+    "📄 INDEX EXISTE:",
+    fs.existsSync(path.join(frontendPath, "index.html"))
+);
+
 const usuariosRoutes = require("./src/routes/usuarios.routes");
 const clientesRoutes = require("./src/routes/clientes.routes");
 const productosRoutes = require("./src/routes/productos.routes");
