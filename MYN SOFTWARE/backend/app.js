@@ -3,43 +3,6 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
-// =====================================================
-// FRONTEND
-// =====================================================
-
-const posiblesRutasFrontend = [
-    path.resolve(__dirname, "../frontend"),
-    "/app/frontend",
-    path.resolve(__dirname, "../../frontend"),
-    "/frontend"
-];
-
-console.log("=======================================");
-console.log("🔎 BUSCANDO FRONTEND");
-console.log("=======================================");
-console.log("📁 __dirname:", __dirname);
-console.log("📁 Rutas revisadas:", posiblesRutasFrontend);
-
-const frontendPath = posiblesRutasFrontend.find((ruta) =>
-    fs.existsSync(path.join(ruta, "index.html"))
-);
-
-if (!frontendPath) {
-    console.error("❌ NO SE ENCONTRÓ frontend/index.html");
-    console.error("📁 Rutas revisadas:", posiblesRutasFrontend);
-    process.exit(1);
-}
-
-console.log("✅ Frontend encontrado en:", frontendPath);
-console.log(
-    "📄 index.html:",
-    path.join(frontendPath, "index.html")
-);
-
-// =====================================================
-// RUTAS
-// =====================================================
-
 const usuariosRoutes = require("./src/routes/usuarios.routes");
 const clientesRoutes = require("./src/routes/clientes.routes");
 const productosRoutes = require("./src/routes/productos.routes");
@@ -60,10 +23,6 @@ const reportesRoutes = require("./src/routes/reportes.routes");
 
 const { verificarToken } = require("./src/middleware/auth.middleware");
 
-// =====================================================
-// EXPRESS
-// =====================================================
-
 const app = express();
 
 // =====================================================
@@ -71,32 +30,45 @@ const app = express();
 // =====================================================
 
 app.use(cors());
-
 app.use(express.json());
-
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(express.urlencoded({ extended: true }));
 
 // =====================================================
-// ARCHIVOS ESTÁTICOS DEL FRONTEND
+// CONFIGURACIÓN DEL FRONTEND
 // =====================================================
 
-app.use(express.static(frontendPath));
+// Buscar automáticamente la carpeta frontend
+// según la ubicación donde Railway ejecute la aplicación.
+
+const posiblesRutasFrontend = [
+    path.resolve(__dirname, "../frontend"),
+    path.resolve(process.cwd(), "frontend"),
+    "/app/frontend",
+    "/frontend"
+];
+
+const frontendPath = posiblesRutasFrontend.find((ruta) =>
+    fs.existsSync(path.join(ruta, "index.html"))
+);
+
+console.log("=======================================");
+console.log("       CONFIGURACIÓN DEL FRONTEND");
+console.log("=======================================");
+console.log("📁 Rutas frontend revisadas:");
+console.log(posiblesRutasFrontend);
+console.log("📁 Frontend seleccionado:", frontendPath);
+
+if (!frontendPath) {
+    console.error("❌ NO SE ENCONTRÓ frontend/index.html");
+} else {
+    console.log("✅ FRONTEND ENCONTRADO:", frontendPath);
+
+    // Servir archivos estáticos del frontend
+    app.use(express.static(frontendPath));
+}
 
 // =====================================================
-// HEALTH CHECK
-// =====================================================
-
-app.get("/health", (req, res) => {
-    return res.status(200).json({
-        ok: true,
-        mensaje: "MYN SOFTWARE funcionando"
-    });
-});
-
-// =====================================================
-// AUTENTICACIÓN PÚBLICA
+// RUTA PÚBLICA DE AUTENTICACIÓN
 // =====================================================
 
 app.use("/api/auth", authRoutes);
@@ -138,32 +110,45 @@ app.use("/api/permisos", verificarToken, permisosRoutes);
 app.use("/api/reportes", verificarToken, reportesRoutes);
 
 // =====================================================
-// PÁGINA PRINCIPAL
+// PÁGINA PRINCIPAL DEL SISTEMA
 // =====================================================
 
 app.get("/", (req, res) => {
-    return res.sendFile(
-        path.join(frontendPath, "index.html")
-    );
+
+    if (!frontendPath) {
+        return res.status(500).json({
+            ok: false,
+            mensaje: "No se encontró el frontend/index.html"
+        });
+    }
+
+    return res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 // =====================================================
-// SPA FALLBACK
+// RUTA DE RESPALDO PARA EL FRONTEND
+// Compatible con Express 5
 // =====================================================
 
 app.get(/.*/, (req, res, next) => {
 
+    // No interferir con las rutas de la API
     if (req.path.startsWith("/api/")) {
         return next();
     }
 
-    return res.sendFile(
-        path.join(frontendPath, "index.html")
-    );
+    if (!frontendPath) {
+        return res.status(500).json({
+            ok: false,
+            mensaje: "No se encontró el frontend/index.html"
+        });
+    }
+
+    return res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 // =====================================================
-// API INEXISTENTE
+// MANEJO DE RUTAS API INEXISTENTES
 // =====================================================
 
 app.use("/api", (req, res) => {
@@ -195,7 +180,7 @@ app.use((error, req, res, next) => {
 });
 
 // =====================================================
-// EXPORTAR APP
+// EXPORTAR APLICACIÓN
 // =====================================================
 
 module.exports = app;
